@@ -15,9 +15,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import LogInForm from './LogInForm'
+import HomeIcon from '@material-ui/icons/Home';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import SchoolIcon from '@material-ui/icons/School';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const drawerWidth = 240;
 
@@ -131,22 +134,32 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {<ListItem button key={"Homepage"}>
+            <ListItemIcon> <HomeIcon /> </ListItemIcon>
+            <ListItemText primary ={"Homepage"} />
+            </ListItem>}
+          {<ListItem button key={"Journal Entries"}>
+            <ListItemIcon> <MenuBookIcon /> </ListItemIcon>
+            <ListItemText primary ={"Journal Entries"} />
+            </ListItem>}
+          {<ListItem button key={"Calendar"}>
+            <ListItemIcon> <CalendarTodayIcon /> </ListItemIcon>
+            <ListItemText primary ={"Calendar"} />
+          </ListItem>}
+          {<ListItem button key={"Stats"}>
+            <ListItemIcon> <EqualizerIcon /> </ListItemIcon>
+            <ListItemText primary ={"Stats"} />
+          </ListItem>}
+          {<ListItem button key={"Learn"}>
+            <ListItemIcon> <SchoolIcon /> </ListItemIcon>
+            <ListItemText primary ={"Learn"} />
+          </ListItem>}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        {<ListItem button key={"Sign Out"}>
+            <ListItemIcon> <ExitToAppIcon /> </ListItemIcon>
+            <ListItemText primary ={"Sign Out"} />
+          </ListItem>}
       </Drawer>
       <main
         className={clsx(classes.content, {
@@ -154,7 +167,6 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
-        {/* <LogInForm /> */}
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
