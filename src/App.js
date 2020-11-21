@@ -6,7 +6,7 @@ import NewUserContainer from './containers/NewUserContainer'
 import NewUserForm from './components/NewUserForm'
 import Navbar from './components/Navbar'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
+import Calendar from './components/Calendar'
 
 class App extends Component {
   render(){
@@ -19,7 +19,7 @@ class App extends Component {
             <Route path="/login" component={LogInContainer} />
             <Route path="/home" component={MainContainer} />
             <Route path="/newuser" component={NewUserForm} />
-
+            <Route path="/calendar" component={Calendar} />
           </div>
         </Switch>
       </div>

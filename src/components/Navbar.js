@@ -154,10 +154,11 @@ export default function Navbar() {
             <ListItemText primary ={"Journal Entries"} />
             </ListItem>
             </Link>}
-          {<ListItem button key={"Calendar"}>
+          {<Link to="/calendar"><ListItem button key={"Calendar"}>
             <ListItemIcon> <CalendarTodayIcon /> </ListItemIcon>
             <ListItemText primary ={"Calendar"} />
-          </ListItem>}
+          </ListItem>
+          </Link>}
           {<ListItem button key={"Stats"}>
             <ListItemIcon> <EqualizerIcon /> </ListItemIcon>
             <ListItemText primary ={"Stats"} />
