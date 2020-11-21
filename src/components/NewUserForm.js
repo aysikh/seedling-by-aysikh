@@ -1,26 +1,44 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 const GOALS_URL = "http://localhost:3001/goals"
 
-class LogInForm extends Component {
+export default function NewUserForm() {
 
-  state = {
-    name: "",
-    email: "", 
-    password: "",
-    goals: ""
-  }
+  // state = {
+  //   name: "",
+  //   email: "", 
+  //   password: "",
+  //   goals: ""
+  // }
+
+  // one fetch call for goals
+const fetchGoals= () => {   
+  fetch(GOALS_URL)
+  .then(rsp => rsp.json())
+  .then(goals => console.log)
+ }
+  // another fetch call for new user
+
+  const [name, setName] = useState(null)
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
+  const [goals, setGoals] = useState(null)
+  
+  useEffect(fetchGoals, [goals])
 
 
-  render() {
+
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+        <Container maxWidth="lg">
+      <form >
         <label>Name: </label>
         <input
           type="text"
-          value={this.state.name}
+          value="name"
           name="name"
           placeholder="Name..."
         />
@@ -29,7 +47,7 @@ class LogInForm extends Component {
         <label>Email Address: </label>
         <input
           type="text" 
-          value={this.state.email} 
+          value="email"
           name="email" 
           placeholder="Email Address..." 
           // onChange={this.handleChange}
@@ -39,7 +57,7 @@ class LogInForm extends Component {
         <label>Password: </label>
         <input
           type="text" 
-          value={this.state.password} 
+          value="password"
           name="password" 
           placeholder="Password..." 
           // onChange={this.handleChange}
@@ -52,9 +70,8 @@ class LogInForm extends Component {
           Submit
         </Button>
         </form>
+      </Container>
       </div>
     )
-  }
+  
 }
-
-export default LogInForm
