@@ -143,13 +143,13 @@ export default function Navbar() {
         </div>
         <Divider />
         <List>
-          {<NavLink to="/home">
+          {<Link to="/user/home">
             <ListItem button key={"Homepage"}>
             <ListItemIcon> <HomeIcon /> </ListItemIcon>
             <ListItemText primary ={"Homepage"} />
             </ListItem>
-          </NavLink>}
-          {<Link to="/newuser"><ListItem button key={"Journal Entries"}>
+          </Link>}
+          {<Link to="/user/newuser"><ListItem button key={"Journal Entries"}>
             <ListItemIcon> <MenuBookIcon /> </ListItemIcon>
             <ListItemText primary ={"Journal Entries"} />
             </ListItem>
@@ -183,7 +183,7 @@ export default function Navbar() {
         <div className={classes.drawerHeader} />
 
         <div>
-          <h1>I am the navbar</h1>
+          {/* <h1>I am the navbar</h1> */}
 
         </div>
 
