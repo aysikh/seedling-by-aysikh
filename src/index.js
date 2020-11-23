@@ -2,12 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
+const theme = createMuiTheme({
+  typography: {
+    h2: {
+      color: '#4ba3c7',
+      textAlign: "center"
+    },
+  },
+  palette: {
+    primary: {
+      main: '#66bb6a',
+    },
+    secondary: {
+      main: '#81d4fa',
+    },
+  }
+})
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ThemeProvider theme={theme}>
     <App />
-  </React.StrictMode>,
+  </ThemeProvider>,
   document.getElementById('root')
 );
 

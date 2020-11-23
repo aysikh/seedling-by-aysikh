@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import './App.css'
 import MainContainer from './containers/MainContainer'
 import LogInContainer from './containers/LogInContainer'
@@ -8,10 +9,11 @@ import Navbar from './components/Navbar'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Calendar from './components/Calendar'
 import HomepageContainer from './containers/HomepageContainer'
-
-// if user is logged in then they should see the nav bar
+import JournalForm from './components/JournalForm'
 
 class App extends Component {
+
+
   render(){
     return(
     <BrowserRouter>
@@ -26,7 +28,8 @@ class App extends Component {
             <Route path="/home" component={HomepageContainer} />
             <Route path="/user" component={MainContainer} />
             <Route path="/newuser" component={NewUserForm} />
-            {/* <Route path="/calendar" component={Calendar} /> */}
+            <Route path="/calendar" component={Calendar} />
+            <Route path="/journal" component={JournalForm} />
           </div>
         </Switch>
       </div>

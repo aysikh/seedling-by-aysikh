@@ -149,12 +149,12 @@ export default function Navbar() {
             <ListItemText primary ={"Homepage"} />
             </ListItem>
           </Link>}
-          {<Link to="/user/newuser"><ListItem button key={"Journal Entries"}>
+          {<Link to="/user/journal"><ListItem button key={"Journal Entries"}>
             <ListItemIcon> <MenuBookIcon /> </ListItemIcon>
             <ListItemText primary ={"Journal Entries"} />
             </ListItem>
             </Link>}
-          {<Link to="/calendar"><ListItem button key={"Calendar"}>
+          {<Link to="/user/calendar"><ListItem button key={"Calendar"}>
             <ListItemIcon> <CalendarTodayIcon /> </ListItemIcon>
             <ListItemText primary ={"Calendar"} />
           </ListItem>
