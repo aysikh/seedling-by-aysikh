@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
   },
   appBarShift: {
@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: "#e0e0e0"
   },
   drawerHeader: {
     display: 'flex',

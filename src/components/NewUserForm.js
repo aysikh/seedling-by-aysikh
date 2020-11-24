@@ -1,4 +1,3 @@
-// import React, { Component } from 'react'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Avatar from '@material-ui/core/Avatar';
@@ -17,11 +16,13 @@ import Container from '@material-ui/core/Container';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
+const GOALS_URL = "http://localhost:3001/goals"
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://localhost:3001/login">
         Seedling
       </Link>{' '}
       {new Date().getFullYear()}
@@ -30,7 +31,6 @@ function Copyright() {
   );
 }
 
-const GOALS_URL = "http://localhost:3001/goals"
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -73,6 +73,28 @@ export default function NewUserForm() {
 
   const classes = useStyles();
 
+  const handleNewUserSubmit = (event) =>{
+    event.preventDefault()
+    const name = event.target[0].value
+    const email = event.target[1].value
+    const password = event.target[2].value
+    const moodArray = []
+
+    // let requestPackage ={
+    //   headers: {'Content-Type':'application/json'},
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     name: name,
+    //     email: email,
+    //     password: password,
+    //     goals: ""
+    //   })
+    // }
+    // fetch("http://localhost:3001/user", requestPackage)
+    // .then(rsp => rsp.json())
+    // .then(console.log)
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -83,7 +105,7 @@ export default function NewUserForm() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={(event) => handleNewUserSubmit(event)}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField

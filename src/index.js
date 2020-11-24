@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 const theme = createMuiTheme({
   typography: {
-    h2: {
+    h3: {
       color: '#4ba3c7',
       textAlign: "center"
     },
