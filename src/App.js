@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import axios from 'axios'
 import './App.css'
 import MainContainer from './containers/MainContainer'
@@ -11,16 +11,35 @@ import Calendar from './components/Calendar'
 import HomepageContainer from './containers/HomepageContainer'
 import JournalForm from './components/JournalForm'
 
-class App extends Component {
 
+export default function App() {
 
-  render(){
+  const [isLoggedIn, setIsLoggedIn]=useState("true")
+  
+
+  const handleLogin = () => {
+    setIsLoggedIn("true")
+  }
+
+  const handleLogout = () => {
+    setIsLoggedIn("false")
+  }
+
+  const loginStatus = () => {
+    axios.get('http://localhost:3001/logged_in', 
+   {withCredentials: true})
+    .then(response => {
+      if (response.data.logged_in) {
+        this.handleLogin(response)
+      } else {
+        this.handleLogout()
+      }
+    })
+    .catch(error => console.log('api errors:', error))
+  }
+
     return(
     <BrowserRouter>
-    
-    {/* <MainContainer />  */}
-    {/* <LogInContainer />  */}
-
       <div>
         <Switch>
           <div>
@@ -35,7 +54,4 @@ class App extends Component {
       </div>
     </BrowserRouter>
     )
-  }
 }
-
-export default App

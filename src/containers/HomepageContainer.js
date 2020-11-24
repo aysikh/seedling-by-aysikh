@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -38,6 +37,7 @@ export default function HomepageContainer() {
         <div className={classes.root}>
           <Paper elevation={3}>
           <div className={classes.root}>
+          
       {/* <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};
