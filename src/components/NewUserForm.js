@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -53,9 +54,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NewUserForm() {
-
+  let history = useHistory();
+  
+  const [name, setName]=useState("")
+  const [email, setEmail]=useState("")
+  const [password,setPassword]=useState("")
   const [goals, setGoals]=useState([])
-
+  const [checkedItems, setCheckedItems] = useState({})
+  const classes = useStyles();
+  
+  const handleName = (event) => {
+    setName(event.target.value)
+  }
+  
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+  
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+  
+  const handleChange = (event) => {
+    setCheckedItems({...checkedItems, [event.target.value] : event.target.checked})
+  }
+  
   const getGoals = async () =>{
     try {
       const userGoals = await
@@ -66,35 +89,38 @@ export default function NewUserForm() {
       alert(err.message);
     }
   }
-
+  
   useEffect(()=>{
     getGoals()
   }, [])
-
-  const classes = useStyles();
-
+  
+  useEffect(()=>{
+    console.log("checkedItems: ", checkedItems);
+  },[checkedItems])
+  
+  
   const handleNewUserSubmit = (event) =>{
     event.preventDefault()
-    const name = event.target[0].value
-    const email = event.target[1].value
-    const password = event.target[2].value
-    const moodArray = []
-
-    // let requestPackage ={
-    //   headers: {'Content-Type':'application/json'},
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     name: name,
-    //     email: email,
-    //     password: password,
-    //     goals: ""
-    //   })
-    // }
-    // fetch("http://localhost:3001/user", requestPackage)
-    // .then(rsp => rsp.json())
-    // .then(console.log)
+    
+    let requestPackage ={
+      headers: {'Content-Type':'application/json'},
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        password: password,
+        goals: checkedItems
+      })
+    }
+    fetch("http://localhost:3001/users", requestPackage)
+    .then(rsp => rsp.json())
+    .then(history.push("/user/home"))
   }
-
+  
+  const testClick = (event) => {
+    console.log(event.target[0].value)
+  }
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -105,15 +131,20 @@ export default function NewUserForm() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate onSubmit={(event) => handleNewUserSubmit(event)}>
+        <form 
+          className={classes.form} 
+          noValidate 
+          onSubmit={(event) => {
+          handleNewUserSubmit(event)}}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
+                onChange={handleName}
                 name="name"
                 variant="outlined"
                 required
                 fullWidth
+                type="name"
                 id="name"
                 label="Name: "
                 autoFocus
@@ -121,23 +152,24 @@ export default function NewUserForm() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+              onChange={handleEmail}
+                name="email"
                 variant="outlined"
                 required
                 fullWidth
+                type="email"
                 id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                label="Email Address: "
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+              onChange={handlePassword}
                 variant="outlined"
                 required
                 fullWidth
                 name="password"
                 label="Password"
-                type="password"
                 id="password"
                 autoComplete="current-password"
               />
@@ -148,7 +180,14 @@ export default function NewUserForm() {
                 <Grid item xs={6}>
                   <FormControlLabel
                     key={goal.id}
-                    control={<Checkbox value={goal.name} icon={<FavoriteBorder />} checkedIcon={<Favorite />} color="secondary" />}
+                    control={<Checkbox 
+                      value={goal.name} 
+                      icon={<FavoriteBorder />} 
+                      checkedIcon={<Favorite />} 
+                      color="secondary" 
+                      checked={checkedItems[goal.name]}
+                      onChange={handleChange}
+                      />}
                     label={goal.name}
                   />
                 </Grid>

@@ -38,7 +38,7 @@ export default function HomepageContainer() {
         <div className={classes.root}>
           <Paper elevation={3}>
           <div className={classes.root}>
-      <Stepper activeStep={activeStep}>
+      {/* <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
@@ -48,7 +48,7 @@ export default function HomepageContainer() {
             </Step>
           );
         })}
-      </Stepper>
+      </Stepper> */}
     </div>
           </Paper >
           <Paper elevation={3}>

@@ -7,12 +7,6 @@ import ArrowForwardOutlinedIcon from '@material-ui/icons/ArrowForwardOutlined';
 
 class LogInForm extends Component {
 
-  state = {
-    email: "", 
-    password: ""
-  }
-
-
   render() {
     return (
       <div>
