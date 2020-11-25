@@ -16,6 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import Logo from '../assets/signinlogo1.png'
 
 const GOALS_URL = "http://localhost:3001/goals"
 
@@ -125,9 +126,8 @@ export default function NewUserForm() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <img src={Logo} style={{height: "30vh"}}/>
+
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>

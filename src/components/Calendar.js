@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import * as dateFns from "date-fns";
 import "./Calendar.css";
-// import * as moment from 'moment'
-
 
 const Calendar = (props) => {
     // console.log(props.selectedDate)
@@ -60,7 +58,7 @@ const Calendar = (props) => {
                             ? "disabled" : dateFns.isSameDay(day, props.selectedDate)
                                 ? "selected" : "" }`}
                         key={day}
-                        onClick={() => onDateClick(dateFns.format(cloneDay, 'dd-MM-yyyy'))}
+                        onClick={() => onDateClick(dateFns.format(cloneDay, 'MM-dd-yyyy'))}
                     >
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>

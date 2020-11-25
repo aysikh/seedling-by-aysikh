@@ -29,7 +29,8 @@ import EqualizerIcon from '@material-ui/icons/Equalizer';
 import SchoolIcon from '@material-ui/icons/School';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
-
+import Logo from '../assets/logo3.png'
+import Logo2 from '../assets/logo5.png'
 
 const drawerWidth = 240;
 
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#e0e0e0"
+    backgroundColor: "#545454"
   },
   drawerHeader: {
     display: 'flex',
@@ -89,6 +90,17 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  text: {
+    color: "white",
+    fontSize: '3rem',
+    fontWeight: '550',
+    lineHeight: '3',
+    letterSpacing: '0.37em',
+    textDecoration: 'none'
+  },
+  icon: {
+    color: "#0D791E"
+  }
 }));
 
 export default function Navbar() {
@@ -124,9 +136,10 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <img src={Logo2} style={{height: "70px"}} /> 
+          {/* <Typography variant="h6" noWrap>
             Seedling
-          </Typography>
+          </Typography> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -146,41 +159,45 @@ export default function Navbar() {
         <Divider />
         <List>
           {<Link to="/user/home">
-            <ListItem button key={"Homepage"}>
-            <ListItemIcon> <HomeIcon /> </ListItemIcon>
-            <ListItemText primary ={"Homepage"} />
+            <ListItem button key={"Homepage"} className={classes.text}>
+            <ListItemIcon className={classes.icon} > <HomeIcon /> </ListItemIcon>
+            <ListItemText primary={"Homepage"} />
             </ListItem>
           </Link>}
           {<Link to="/user/dailyentry">
-            <ListItem button key={"Add Daily Entry"}>
-            <ListItemIcon> <InsertEmoticonIcon /> </ListItemIcon>
-            <ListItemText primary ={"Add Daily Entry"} />
+            <ListItem button key={"Add Daily Entry"} className={classes.text}>
+            <ListItemIcon className={classes.icon}> <InsertEmoticonIcon /> </ListItemIcon>
+            <ListItemText primary={"Add Daily Entry"} />
             </ListItem>
           </Link>}
-          {<Link to="/user/journal"><ListItem button key={"Journal Entries"}>
-            <ListItemIcon> <MenuBookIcon /> </ListItemIcon>
-            <ListItemText primary ={"Journal Entries"} />
+          {<Link to="/user/journal">
+            <ListItem button key={"Journal Entries"} className={classes.text}>
+            <ListItemIcon className={classes.icon}> <MenuBookIcon /> </ListItemIcon>
+            <ListItemText primary={"Journal Entries"} />
             </ListItem>
             </Link>}
-          {<Link to="/user/calendar"><ListItem button key={"Calendar"}>
-            <ListItemIcon> <CalendarTodayIcon /> </ListItemIcon>
-            <ListItemText primary ={"Calendar"} />
+          {<Link to="/user/calendar">
+            <ListItem button key={"Calendar"} className={classes.text}>
+            <ListItemIcon className={classes.icon}> <CalendarTodayIcon /> </ListItemIcon>
+            <ListItemText primary={"Calendar"} />
           </ListItem>
           </Link>}
-          {<Link to="/user/stats"><ListItem button key={"Stats"}>
-            <ListItemIcon> <EqualizerIcon /> </ListItemIcon>
-            <ListItemText primary ={"Stats"} />
+          {<Link to="/user/stats">
+            <ListItem button key={"Stats"} className={classes.text}>
+            <ListItemIcon className={classes.icon}> <EqualizerIcon /> </ListItemIcon>
+            <ListItemText primary={"Stats"} />
           </ListItem>
           </Link>}
-          {<ListItem button key={"Learn"}>
-            <ListItemIcon> <SchoolIcon /> </ListItemIcon>
-            <ListItemText primary ={"Learn"} />
+          {<ListItem button key={"Learn"} className={classes.text}>
+            <ListItemIcon className={classes.icon}> <SchoolIcon /> </ListItemIcon>
+            <ListItemText primary={"Learn"} />
           </ListItem>}
         </List>
         <Divider />
-        {<NavLink to="/login"><ListItem button key={"Sign Out"}>
-            <ListItemIcon> <ExitToAppIcon /> </ListItemIcon>
-            <ListItemText primary ={"Sign Out"} />
+        {<NavLink to="/login">
+          <ListItem button key={"Sign Out"} className={classes.text}>
+            <ListItemIcon className={classes.icon}> <ExitToAppIcon /> </ListItemIcon>
+            <ListItemText primary={"Sign Out"} />
           </ListItem>
           </NavLink>}
       </Drawer>
