@@ -10,6 +10,9 @@ import Navbar from '../components/Navbar'
 import HomepageContainer from './HomepageContainer'
 import Calendar from '../components/Calendar'
 import JournalForm from '../components/JournalForm'
+import Main from '../components/Main'
+import MoodForm from '../components/MoodForm'
+import CalendarContainer from './CalendarContainer'
 
 export default function MainContainer() {
   return (
@@ -21,8 +24,10 @@ export default function MainContainer() {
         <Route path="/logout" component={LogInContainer} />
         <Route exact path="/user/newuser" component={NewUserForm} />
         <Route exact path ="/user/home" component={HomepageContainer} />
-        <Route exact path="/user/calendar" component={Calendar} />
+        <Route exact path="/user/calendar" component={CalendarContainer} />
         <Route exact path="/user/journal" component={JournalForm} />
+        <Route exact path="/user/stats" component={Main} />
+        <Route exact path ="/user/dailyentry" component={MoodForm} />
       </Switch>
       </Container>
     </div>

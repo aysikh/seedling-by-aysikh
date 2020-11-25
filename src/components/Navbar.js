@@ -28,6 +28,7 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import SchoolIcon from '@material-ui/icons/School';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 
 
 const drawerWidth = 240;
@@ -150,6 +151,12 @@ export default function Navbar() {
             <ListItemText primary ={"Homepage"} />
             </ListItem>
           </Link>}
+          {<Link to="/user/dailyentry">
+            <ListItem button key={"Add Daily Entry"}>
+            <ListItemIcon> <InsertEmoticonIcon /> </ListItemIcon>
+            <ListItemText primary ={"Add Daily Entry"} />
+            </ListItem>
+          </Link>}
           {<Link to="/user/journal"><ListItem button key={"Journal Entries"}>
             <ListItemIcon> <MenuBookIcon /> </ListItemIcon>
             <ListItemText primary ={"Journal Entries"} />
@@ -160,10 +167,11 @@ export default function Navbar() {
             <ListItemText primary ={"Calendar"} />
           </ListItem>
           </Link>}
-          {<ListItem button key={"Stats"}>
+          {<Link to="/user/stats"><ListItem button key={"Stats"}>
             <ListItemIcon> <EqualizerIcon /> </ListItemIcon>
             <ListItemText primary ={"Stats"} />
-          </ListItem>}
+          </ListItem>
+          </Link>}
           {<ListItem button key={"Learn"}>
             <ListItemIcon> <SchoolIcon /> </ListItemIcon>
             <ListItemText primary ={"Learn"} />

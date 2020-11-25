@@ -54,7 +54,6 @@ export default function HomepageContainer() {
           <Paper elevation={3}>
           <h1>User Habits Container Here</h1>
           </Paper >
-          <MoodForm /> 
         </div>
       </div>
     )

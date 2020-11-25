@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import * as dateFns from "date-fns";
 import "./Calendar.css";
+// import * as moment from 'moment'
 
-const Calendar = () => {
-    const [currentDate, setCurrentDate] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(new Date());
+
+const Calendar = (props) => {
+    // console.log(props.selectedDate)
+
     const header = () => {
         const dateFormat = "MMMM yyyy";
         return (
@@ -15,7 +17,7 @@ const Calendar = () => {
                     </div>
                 </div>
                 <div className="column col-center">
-                    <span>{dateFns.format(currentDate, dateFormat)}</span>
+                    <span>{dateFns.format(props.currentDate, dateFormat)}</span>
                 </div>
                 <div className="column col-end">
                     <div className="icon" onClick={nextMonth}>
@@ -26,9 +28,9 @@ const Calendar = () => {
         );
     };
     const days = () => {
-        const dateFormat = "ddd";
+        const dateFormat = "eeee";
         const days = [];
-        let startDate = dateFns.startOfWeek(currentDate);
+        let startDate = dateFns.startOfWeek(props.currentDate);
         for (let i = 0; i < 7; i++) {
             days.push(
                 <div className="column col-center" key={i}>
@@ -39,7 +41,7 @@ const Calendar = () => {
         return <div className="days row">{days}</div>;
     };
     const cells = () => {
-        const monthStart = dateFns.startOfMonth(currentDate);
+        const monthStart = dateFns.startOfMonth(props.currentDate);
         const monthEnd = dateFns.endOfMonth(monthStart);
         const startDate = dateFns.startOfWeek(monthStart);
         const endDate = dateFns.endOfWeek(monthEnd);
@@ -55,10 +57,10 @@ const Calendar = () => {
                 days.push(
                     <div
                         className={`column cell ${!dateFns.isSameMonth(day, monthStart)
-                            ? "disabled" : dateFns.isSameDay(day, selectedDate)
+                            ? "disabled" : dateFns.isSameDay(day, props.selectedDate)
                                 ? "selected" : "" }`}
                         key={day}
-                        onClick={() => onDateClick(cloneDay)}
+                        onClick={() => onDateClick(dateFns.format(cloneDay, 'dd-MM-yyyy'))}
                     >
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
@@ -74,13 +76,13 @@ const Calendar = () => {
         return <div className="body">{rows}</div>;
     }
     const nextMonth = () => {
-        setCurrentDate(dateFns.addMonths(currentDate, 1));
+        props.setCurrentDate(dateFns.addMonths(props.currentDate, 1));
     };
     const prevMonth = () => {
-        setCurrentDate(dateFns.subMonths(currentDate, 1));
+        props.setCurrentDate(dateFns.subMonths(props.currentDate, 1));
     };
     const onDateClick = day => {
-        setSelectedDate(day);
+        props.setSelectedDate(day);
     }
     return (
         <div>
