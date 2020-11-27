@@ -5,31 +5,29 @@ import Bear3 from '../assets/bear3.png'
 import Bear4 from '../assets/bear4.png'
 import Bear5 from '../assets/bear5.png'
 
-const ratingImage = (rating) => {
-    switch (rating){
-        case "5": 
-            <img src={Bear1} /> 
-            break;
-        case "4": 
-            <img src={Bear2} /> 
-            break;
-        case "3":
-            <img src={Bear3} />
-            break;
-        case "2":
-            <img src={Bear4} />
-            break;
-        case "1":
-            <img src={Bear5} /> 
-            break;
-    }
-}
+// const ratingImage = (rating) => {
+//     switch (rating){
+//         case "5": 
+//             <img src={Bear1} /> 
+//             break;
+//         case "4": 
+//             <img src={Bear2} /> 
+//             break;
+//         case "3":
+//             <img src={Bear3} />
+//             break;
+//         case "2":
+//             <img src={Bear4} />
+//             break;
+//         case "1":
+//             <img src={Bear5} /> 
+//             break;
+//     }
+// }
 
 const CalendarInfo = (props) => {
 
-    const dateEntry = () => {
 
-    }
     return (
         <div>
              <h2>

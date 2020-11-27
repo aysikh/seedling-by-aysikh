@@ -6,7 +6,6 @@ import axios from 'axios'
 
 const DAILY_ENTRY_URL = "http://localhost:3001/daily_entries"
 
-
 const CalendarContainer = () => {
 
   const [currentDate, setCurrentDate] = useState(new Date());

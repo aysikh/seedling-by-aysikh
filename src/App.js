@@ -6,7 +6,7 @@ import LogInContainer from './containers/LogInContainer'
 import NewUserContainer from './containers/NewUserContainer'
 import NewUserForm from './components/NewUserForm'
 import Navbar from './components/Navbar'
-import MoodForm from './components/MoodForm'
+import DailyEntryForm from './components/DailyEntryForm'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Calendar from './components/Calendar'
 import HomepageContainer from './containers/HomepageContainer'
@@ -53,7 +53,7 @@ export default function App() {
             <Route path="/calendar" component={CalendarContainer} />
             <Route path="/journal" component={JournalForm} />
             <Route path="/stats" component={Main} />
-            <Route path="/dailyentry" component={MoodForm} />
+            <Route path="/dailyentry" component={DailyEntryForm} />
           </div>
         </Switch>
       </div>

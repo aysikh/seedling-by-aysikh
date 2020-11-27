@@ -11,7 +11,7 @@ import HomepageContainer from './HomepageContainer'
 import Calendar from '../components/Calendar'
 import JournalForm from '../components/JournalForm'
 import Main from '../components/Main'
-import MoodForm from '../components/MoodForm'
+import DailyEntryForm from '../components/DailyEntryForm'
 import CalendarContainer from './CalendarContainer'
 
 export default function MainContainer() {
@@ -27,7 +27,7 @@ export default function MainContainer() {
         <Route exact path="/user/calendar" component={CalendarContainer} />
         <Route exact path="/user/journal" component={JournalForm} />
         <Route exact path="/user/stats" component={Main} />
-        <Route exact path ="/user/dailyentry" component={MoodForm} />
+        <Route exact path ="/user/dailyentry" component={DailyEntryForm} />
       </Switch>
       </Container>
     </div>

@@ -15,10 +15,6 @@
   import Typography from '@material-ui/core/Typography';
   import { useHistory } from 'react-router-dom'
 
-  import { FormControlLabel } from '@material-ui/core'
-  import Grid from '@material-ui/core/Grid';
-  import Checkbox from '@material-ui/core/Checkbox';
-
   const PROMPTS_URL = "http://localhost:3001/prompts"
   const MOODS_URL = "http://localhost:3001/moods"
   const USERS_URL = "http://localhost:3001/users/1"
