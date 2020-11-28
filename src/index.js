@@ -9,7 +9,8 @@ const theme = createMuiTheme({
   typography: {
     h3: {
       color: '#4ba3c7',
-      textAlign: "center"
+      textAlign: "center",
+      fontFamily: "Roboto"
     },
   },
   palette: {
