@@ -54,13 +54,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewUserForm() {
+export default function NewUserForm(props) {
   let history = useHistory();
   
   const [name, setName]=useState("")
   const [email, setEmail]=useState("")
   const [password,setPassword]=useState("")
   const [goals, setGoals]=useState([])
+  const [errors, setErrors]=useState([])
   const [checkedItems, setCheckedItems] = useState({})
   const classes = useStyles();
   
@@ -75,11 +76,54 @@ export default function NewUserForm() {
   const handlePassword = (event) => {
     setPassword(event.target.value)
   }
+
+  const handleGoals = (event) => {
+    setGoals(event.target.value)
+  }
   
   const handleChange = (event) => {
     setCheckedItems({...checkedItems, [event.target.value] : event.target.checked})
   }
-  
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const {username, email, password, password_confirmation} = this.state
+    let user = {
+      name: name,
+      email: email,
+      password: password,
+      goals: goals
+    }
+
+    axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+        .then(response => {
+          if (response.data.status === 'created') {
+            props.handleLogin(response.data)
+            redirect()
+          } else {
+            setState({
+              errors: response.data.errors
+            })
+          }
+        })
+        .catch(error => console.log('api errors:', error))
+      };
+
+    const redirect = () => {
+        props.history.push('/')
+      }
+
+    const handleErrors = () => {
+        return (
+          <div>
+            <ul>{errors.map((error) => {
+              return <li key={error}>{error}</li>
+            })}
+            </ul> 
+          </div>
+        )
+      }
+
   const getGoals = async () =>{
     try {
       const userGoals = await
@@ -118,9 +162,9 @@ export default function NewUserForm() {
     .then(history.push("/user/home"))
   }
   
-  const testClick = (event) => {
-    console.log(event.target[0].value)
-  }
+  // const testClick = (event) => {
+  //   console.log(event.target[0].value)
+  // }
   
   return (
     <Container component="main" maxWidth="xs">
@@ -215,55 +259,11 @@ export default function NewUserForm() {
       <Box mt={5}>
         <Copyright />
       </Box>
+      <div>
+          {
+            errors ? handleErrors() : null
+          }
+        </div>
     </Container>
   );
 }
-
-
-
-
-
-
-
-      // <div>
-      //   <Container maxWidth="lg">
-      // <form >
-      //   <label>Name: </label>
-      //   <input
-      //     type="text"
-      //     value="name"
-      //     name="name"
-      //     placeholder="Name..."
-      //   />
-      //   <br/>
-      //   <br/>
-      //   <label>Email Address: </label>
-      //   <input
-      //     type="text" 
-      //     value="email"
-      //     name="email" 
-      //     placeholder="Email Address..." 
-      //     // onChange={this.handleChange}
-      //     />
-      //   <br />
-      //   <br />
-      //   <label>Password: </label>
-      //   <input
-      //     type="text" 
-      //     value="password"
-      //     name="password" 
-      //     placeholder="Password..." 
-      //     // onChange={this.handleChange}
-      //     />
-      //   <br /> 
-      //   <br /> 
-      //   <label>What are your goals? </label>
-
-      //   <Button onClick={()=> alert("hello")} variant="contained" color="blue">
-      //     Submit
-      //   </Button>
-      //   </form>
-      // </Container>
-
-    
-  

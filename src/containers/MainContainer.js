@@ -8,7 +8,6 @@ import NewUserForm from '../components/NewUserForm'
 import Container from '@material-ui/core/Container'
 import Navbar from '../components/Navbar'
 import HomepageContainer from './HomepageContainer'
-import Calendar from '../components/Calendar'
 import JournalForm from '../components/JournalForm'
 import Main from '../components/Main'
 import DailyEntryForm from '../components/DailyEntryForm'
@@ -19,7 +18,6 @@ export default function MainContainer() {
     <div>
       <Container maxWidth="lg">
       <Navbar />
-    {/* <h1> main container </h1>  */}
       <Switch>
         <Route path="/logout" component={LogInContainer} />
         <Route exact path="/user/newuser" component={NewUserForm} />

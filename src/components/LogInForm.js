@@ -1,13 +1,66 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
 import ArrowForwardOutlinedIcon from '@material-ui/icons/ArrowForwardOutlined';
+import {Link} from 'react-router-dom'
 
+const LogInForm = (props) =>  {
 
-class LogInForm extends Component {
+  const [email, setEmail]=useState("")
+  const [password, setPassword]=useState("")
+  const [errors, setErrors]=useState("")
 
-  render() {
+  useEffect(()=> {
+    return props.loggedInStatus ? redirect() : null
+  }, [])
+
+  const handleEmailChange = (event) => {
+      setEmail(event.target.value)
+  };
+
+  const handlePasswordChange = (event) => {
+      setPassword(event.target.value)
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const {username, email, password} = this.state
+    let user = {
+          name: name,
+          email: email,
+          password: password
+        }
+        
+    axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+        .then(response => {
+          if (response.data.logged_in) {
+            props.handleLogin(response.data)
+            redirect()
+          } else {
+            setState({
+              errors: response.data.errors
+            })
+          }
+        })
+        .catch(error => console.log('api errors:', error))
+      };
+
+    const redirect = () => {
+        props.history.push('/')
+      }
+
+    const handleErrors = () => {
+        return (
+          <div>
+            <ul>
+            {errors.map(error => {
+            return <li key={error}>{error}</li>
+              })}
+            </ul>
+          </div>
+        )
+      }
+
     return (
       <div>
       <form onSubmit={this.handleSubmit}>
@@ -17,7 +70,7 @@ class LogInForm extends Component {
           value={this.state.email} 
           name="email" 
           placeholder="Email Address..." 
-          // onChange={this.handleChange}
+          onChange={handleEmailChange}
           />
         <br />
         <br />
@@ -27,20 +80,24 @@ class LogInForm extends Component {
           value={this.state.password} 
           name="password" 
           placeholder="Password..." 
-          // onChange={this.handleChange}
+          onChange={handlePasswordChange}
           />
         <br /> 
         <Button 
           endIcon={<ArrowForwardOutlinedIcon />}
-          onClick={()=> alert("hello")} 
           variant="contained" 
           color="primary">
           Submit
         </Button>
         </form>
+        <div>
+          {
+            errors ? handleErrors() : null
+          }
+        </div>
       </div>
     )
-  }
+
 }
 
 export default LogInForm
