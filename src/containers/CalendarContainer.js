@@ -4,10 +4,22 @@ import Calendar from '../components/Calendar'
 import CalendarInfo from '../components/CalendarInfo'
 import axios from 'axios'
 
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Paper from '@material-ui/core/Paper';
+
 const DAILY_ENTRY_URL = "http://localhost:3001/daily_entries"
 
-const CalendarContainer = () => {
+const useStyles = makeStyles((theme) => ({
+  card: {
+    padding: "20px",
+    borderRadius: "3px"
+  },
+}));
 
+const CalendarContainer = () => {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [dailyentries, setDailyEntries] = useState(null)
@@ -28,6 +40,17 @@ const CalendarContainer = () => {
   },[])
 
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
   const parsedDateEntry = () => {
     let parsedDate = []
     let dates = []
@@ -37,7 +60,7 @@ const CalendarContainer = () => {
           let info = {}
           info.date = dailyentry.created_at
           info.rating = dailyentry.rating 
-          // info.prompt = dailyentry.prompt 
+          info.prompt = dailyentry.prompt
           info.content = dailyentry.content
           dates.push(info)
         })
@@ -58,29 +81,42 @@ const CalendarContainer = () => {
   return (
     <div>
       <br />
-
       <div>
-      <Calendar 
-        currentDate={currentDate} 
-        setCurrentDate={setCurrentDate}
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-        dailyentries={dailyentries}
-        setDailyEntries={setDailyEntries}
-        /> 
+        <Calendar 
+          currentDate={currentDate} 
+          setCurrentDate={setCurrentDate}
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          dailyentries={dailyentries}
+          setDailyEntries={setDailyEntries}
+          handleClick={handleClick}
+          /> 
       </div>
-      {selectedDate && (
-        <div>
-          <CalendarInfo 
-            selectedDate={selectedDate.toString()}
-            parsedDateEntry={parsedDateEntry}
-            //  selectedDailyEntry={dailyentries.filter(dailyentry => {
-              //  let newDate = new Date(dailyentry.created_at).toDateString()
-              //  return dailyentry.created_at == selectedDate
-            //  })}
-          />
-        </div>
-      )}
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <Paper className={classes.card}>
+        {selectedDate && (
+          <div>
+            <CalendarInfo 
+              selectedDate={selectedDate.toString()}
+              parsedDateEntry={parsedDateEntry}
+            />
+          </div>
+        )}
+          </Paper>
+       </Popover>
     </div>
   )
 } 

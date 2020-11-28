@@ -58,7 +58,7 @@ const Calendar = (props) => {
                             ? "disabled" : dateFns.isSameDay(day, props.selectedDate)
                                 ? "selected" : "" }`}
                         key={day}
-                        onClick={() => onDateClick(dateFns.format(cloneDay, 'MM-dd-yyyy'))}
+                        onClick={(event) => onDateClick(dateFns.format(cloneDay, 'MM-dd-yyyy'), props.handleClick(event))}
                     >
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
@@ -84,9 +84,7 @@ const Calendar = (props) => {
     }
     return (
         <div>
-            <div>
-                <h1> Calendar Here </h1>
-            </div>
+            <br/>
             <div className="calendar">
                 <div>{header()}</div>
                 <div>{days()}</div>
