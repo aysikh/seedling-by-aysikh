@@ -27,11 +27,30 @@ import Bear5 from '../assets/bear5.png'
 
 const CalendarInfo = (props) => {
 
+    const dateinfo = () => {
+        // console.log(props.parsedDateEntry())
+        // let something = props.parsedDateEntry().filter(date => date.date == props.selectedDate)
+        let something = props.parsedDateEntry()
+        
+        // console.log(something)
+        let x = something.filter(entry => entry.date == props.selectedDate)
+        console.log(x)
+        if (x[0]){
+            return x[0].content
+        }
+    }
 
     return (
         <div>
              <h2>
                 {props.selectedDate}
+                <br /> 
+                <div>
+                    rating: {dateinfo()}
+                </div>
+                {/* {props.parsedDateEntry().flat().includes(props.selectedDate) ? "true" : "false"} */}
+                {/* hello */}
+                {/* rating: {props.selectedDailyEntry.rating} */}
             </h2>
         </div>
     )

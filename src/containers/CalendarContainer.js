@@ -16,7 +16,7 @@ const CalendarContainer = () => {
     try {
       const userDailyEntries = await
       axios.get(DAILY_ENTRY_URL)
-      // console.log(userDailyEntries.data)
+      console.log(userDailyEntries.data)
       setDailyEntries(userDailyEntries.data)
     } catch (err){
       alert(err.message)
@@ -31,24 +31,34 @@ const CalendarContainer = () => {
   const parsedDateEntry = () => {
     let parsedDate = []
     let dates = []
+    // let info = {}
     if (dailyentries){
-        dailyentries.map(dailyentry => dates.push(dailyentry.created_at))
+        dailyentries.map(dailyentry => {
+          let info = {}
+          info.date = dailyentry.created_at
+          info.rating = dailyentry.rating 
+          // info.prompt = dailyentry.prompt 
+          info.content = dailyentry.content
+          dates.push(info)
+        })
     }
+    // console.log(dates)
     dates.map(date => {
-        let x = date.split("-")
+        let x = date.date.split("-")
         let y = x[2].split("T")
         let z = y[0] 
         let parsed = [x[1], z, x[0]]
-        parsedDate.push([parsed.join("-"), "I feel bad" ])
-        console.log(parsedDate)
+        date.date = parsed.join("-")
+        // console.log(parsedDate)
+        return date
       })
-      return parsedDate
+      return dates
 }
 
   return (
     <div>
       <br />
-      <div>{parsedDateEntry()}</div>
+
       <div>
       <Calendar 
         currentDate={currentDate} 
@@ -63,6 +73,11 @@ const CalendarContainer = () => {
         <div>
           <CalendarInfo 
             selectedDate={selectedDate.toString()}
+            parsedDateEntry={parsedDateEntry}
+            //  selectedDailyEntry={dailyentries.filter(dailyentry => {
+              //  let newDate = new Date(dailyentry.created_at).toDateString()
+              //  return dailyentry.created_at == selectedDate
+            //  })}
           />
         </div>
       )}
