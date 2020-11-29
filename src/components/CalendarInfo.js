@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Bear1 from '../assets/bear1.png'
 import Bear2 from '../assets/bear2.png'
@@ -18,7 +18,7 @@ const CalendarInfo = (props) => {
   const classes = useStyles();
     const entryContent = () => {
         let something = props.parsedDateEntry()
-        let x = something.filter(entry => entry.date == props.selectedDate)
+        let x = something.filter(entry => entry.date === props.selectedDate)
         if (x[0]){
             return x[0].content
         }
@@ -26,20 +26,20 @@ const CalendarInfo = (props) => {
 
     const entryRating = () => {
         let something = props.parsedDateEntry()
-        let y = something.filter(entry => entry.date == props.selectedDate)
-        if (y[0] && y[0].rating == 1){
+        let y = something.filter(entry => entry.date === props.selectedDate)
+        if (y[0] && y[0].rating === 1){
             return <img src={Bear5} className={classes.image}/>
         }
-        if (y[0] && y[0].rating == 2){
+        if (y[0] && y[0].rating === 2){
             return <img src={Bear4} className={classes.image}/>
         }
-        if (y[0] && y[0].rating == 3){
+        if (y[0] && y[0].rating === 3){
             return <img src={Bear3} className={classes.image}/>
         }
-        if (y[0] && y[0].rating == 4){
+        if (y[0] && y[0].rating === 4){
             return <img src={Bear2} className={classes.image}/>
         }
-        else if (y[0] && y[0].rating == 5) {
+        else if (y[0] && y[0].rating === 5) {
             return <img src={Bear1} className={classes.image}/>
         }
     }

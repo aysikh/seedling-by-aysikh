@@ -1,4 +1,5 @@
 // import React, { useEffect, useState } from 'react'
+// import axios from 'axios'
 // import {Link} from 'react-router-dom'
 
 // const login = () => {
@@ -6,6 +7,7 @@
 //     const [name, setName]=useState("")
 //     const [email, setEmail]=useState("")
 //     const [password, setPassword]=useState("")
+//     const [errors, setErrors]=useState("")
 
 //     const handleNameChange = (event) => {
 //         setName(event.target.value)
@@ -25,28 +27,28 @@
 
 //     return (
 //         <div>
-//             <h1>Sign Up</h1>
-//             <form onSubmit={this.handleSubmit}>
+//             <h1>Log In</h1>
+//             <form onSubmit={handleSubmit}>
 //             <input
 //                 placeholder="username"
 //                 type="text"
 //                 name="name"
 //                 value={username}
-//                 onChange={this.handleNameChange}
+//                 onChange={handleNameChange}
 //             />
 //             <input
 //                 placeholder="email"
 //                 type="text"
 //                 name="email"
 //                 value={email}
-//                 onChange={this.handleemailChange}
+//                 onChange={handleemailChange}
 //             />
 //             <input
 //                 placeholder="password"
 //                 type="password"
 //                 name="password"
 //                 value={password}
-//                 onChange={this.handlePasswordChange}
+//                 onChange={handlePasswordChange}
 //             />
 //             <button placeholder="submit" type="submit">
 //                 Log In

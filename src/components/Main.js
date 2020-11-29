@@ -2,15 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
+
 import Box from '@material-ui/core/Box';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
+
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -105,20 +99,6 @@ const Main = () => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      {/* <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper),
-        }}
-        open="true"
-      >
-        <div className={classes.toolbarIcon}>
-        </div>
-        <Divider />
-        <li>test</li>
-        <Divider />
-        <li>test</li>
-      </Drawer> */}
       <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
 

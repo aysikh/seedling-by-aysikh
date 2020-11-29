@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { CssBaseline } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios'
 import './App.css'
 import MainContainer from './containers/MainContainer'
-import LogInContainer from './containers/LogInContainer'
-import NewUserContainer from './containers/NewUserContainer'
+// import LogInContainer from './containers/LogInContainer'
+// import NewUserContainer from './containers/NewUserContainer'
 import NewUserForm from './components/NewUserForm'
-import Navbar from './components/Navbar'
+// import Navbar from './components/Navbar'
 import DailyEntryForm from './components/DailyEntryForm'
-import Calendar from './components/Calendar'
+// import Calendar from './components/Calendar'
 import HomepageContainer from './containers/HomepageContainer'
 import JournalForm from './components/JournalForm'
-import Stats from './components/Stats'
+// import Stats from './components/Stats'
 import Main from './components/Main'
 import CalendarContainer from './containers/CalendarContainer'
+// import NoMatchPage from './components/NoMatchPage'
+import Home from './components/Home'
+import Login from './components/Login'
+import LandingPage from './components/LandingPage'
 
 export default function App() {
 
@@ -54,7 +60,8 @@ export default function App() {
       <div>
         <Switch>
           <div>
-            <Route 
+            <MainContainer />
+            {/* <Route 
               exact path='/' 
               render={props => (
               <Home {...props} handleLogout={handleLogout} loggedInStatus={isLoggedIn}/>
@@ -75,13 +82,14 @@ export default function App() {
               handleLogin={handleLogin} 
               loggedInStatus={isLoggedIn}/>
               )}
-            />
+            /> */}
             <Route path="/home" component={HomepageContainer} />
             <Route path="/user" component={MainContainer} />
             <Route path="/calendar" component={CalendarContainer} />
             <Route path="/journal" component={JournalForm} />
             <Route path="/stats" component={Main} />
             <Route path="/dailyentry" component={DailyEntryForm} />
+            {/* <Route component={NoMatchPage} /> */}
           </div>
         </Switch>
       </div>

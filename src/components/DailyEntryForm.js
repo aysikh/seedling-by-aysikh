@@ -7,9 +7,9 @@
 
   import axios from 'axios'
   import { makeStyles } from '@material-ui/core/styles';
-  import Modal from '@material-ui/core/Modal';
-  import Backdrop from '@material-ui/core/Backdrop';
-  import Fade from '@material-ui/core/Fade';
+  // import Modal from '@material-ui/core/Modal';
+  // import Backdrop from '@material-ui/core/Backdrop';
+  // import Fade from '@material-ui/core/Fade';
   import Button from '@material-ui/core/Button'
   import TextField from '@material-ui/core/TextField';
   import Typography from '@material-ui/core/Typography';
@@ -50,6 +50,10 @@
       border: "solid 4px #838383",
       padding: "12px 12px 12px 12px",
       margin: "0px 0px 10px 0",
+    },
+    image: {
+      height: "13.5rem",
+      margin: "8px"
     }
   }));
 
@@ -140,8 +144,6 @@
       setContent(event.target.value)
     }
 
-
-
     const handleSubmit = (event) => {
       event.preventDefault()
       console.log(event)
@@ -166,7 +168,7 @@
     
     return (
       <div>
-        <Modal
+        {/* <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
           className={classes.modal}
@@ -178,7 +180,9 @@
             timeout: 500,
           }}
         >
-          <Fade in={open}>
+          <Fade in={open}> */}
+          <br /> <br />
+          
             <div className={classes.paper}>
           <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}>
           <label><Typography variant="h3"> How are you feeling right now?</Typography></label>
@@ -190,6 +194,7 @@
             src={Bear1} 
             onClick={handleClick}
             className={selected == 5 ? classes.withBorder : classes.noBorder}
+            className={classes.image}
             />
           <input 
               value={4} 
@@ -197,6 +202,7 @@
               src={Bear2} 
               onClick={handleClick} 
               className={selected == 4 ? classes.withBorder : classes.noBorder}
+              className={classes.image}
             />
           <input 
             value={3} 
@@ -204,6 +210,7 @@
             src={Bear3} 
             onClick={handleClick} 
             className={selected == 3 ? classes.withBorder : classes.noBorder}
+            className={classes.image}
           />
           <input 
             value={2} 
@@ -211,6 +218,7 @@
             src={Bear4} 
             onClick={handleClick} 
             className={selected == 2 ? classes.withBorder : classes.noBorder}
+            className={classes.image}
           />
           <input 
             value={1} 
@@ -218,10 +226,12 @@
             src={Bear5} 
             onClick={handleClick} 
             className={selected == 1 ? classes.withBorder : classes.noBorder}
+            className={classes.image}
           />
+          
           <br /> 
           <br />
-
+          <center>
           <label><h1>{randomPrompt}</h1></label> 
           <br />
           {/* <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}> */}
@@ -251,11 +261,11 @@
             Submit
           </Button>
       {/* </form> */}
+          </center>
             </form>
-
             </div>
-          </Fade>
-        </Modal>
+          {/* </Fade> */}
+        {/* </Modal> */}
       </div>
     );
   }

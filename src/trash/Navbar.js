@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { NavLink, Redirect, Link } from 'react-router-dom'
+import axios from 'axios'
 // import { Route, Switch, Redirect, Link } from 'react-router-dom';
-
 // import LogInContainer from './LogInContainer'
 // import NewUserContainer from './NewUserContainer'
-
 // import HomepageContainer from '../containers/HomepageContainer'
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -13,7 +12,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -29,7 +28,6 @@ import EqualizerIcon from '@material-ui/icons/Equalizer';
 import SchoolIcon from '@material-ui/icons/School';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
-import Logo from '../assets/logo3.png'
 import Logo2 from '../assets/logo5.png'
 
 const drawerWidth = 240;
@@ -103,7 +101,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const handleClick = () => {
+    axios.delete('http://localhost:3001/logout', {withCredentials: true})
+    .then(response => {
+      props.handleLogout()
+      props.history.push('/')
+    })
+    .catch(error => console.log(error))
+}
+
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -194,12 +202,11 @@ export default function Navbar() {
           </ListItem>}
         </List>
         <Divider />
-        {<NavLink to="/login">
+        {props.loggedInStatus ? <NavLink to="/login" onClick={handleClick} /> : null}
           <ListItem button key={"Sign Out"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <ExitToAppIcon /> </ListItemIcon>
             <ListItemText primary={"Sign Out"} />
           </ListItem>
-          </NavLink>}
       </Drawer>
       <main
         className={clsx(classes.content, {
