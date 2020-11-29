@@ -7,14 +7,13 @@ import Container from '@material-ui/core/Container';
 export default function NewUserContainer(){
   return(
     <React.Fragment>
-    <CssBaseline />
-    <Container maxWidth="lr">
-      <div>
-        hello I am the new user container 
-        <NewUserForm />
-      </div>
-    </Container>
-  </React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="lr">
+          <div>
+            <NewUserForm />
+          </div>
+      </Container>
+    </React.Fragment>
 
   )
 }

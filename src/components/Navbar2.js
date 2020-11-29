@@ -125,12 +125,12 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>}
         </List>
         <Divider />
-        // {<NavLink to="/login">
+        {<NavLink to="/">
           <ListItem button key={"Sign Out"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <ExitToAppIcon /> </ListItemIcon>
             <ListItemText primary={"Sign Out"} />
           </ListItem>
-          // </NavLink>}
+        </NavLink>}
     </div>
   );
           

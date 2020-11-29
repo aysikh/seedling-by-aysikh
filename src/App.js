@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import './App.css'
 import MainContainer from './containers/MainContainer'
 // import LogInContainer from './containers/LogInContainer'
-// import NewUserContainer from './containers/NewUserContainer'
+import NewUserContainer from './containers/NewUserContainer'
 import NewUserForm from './components/NewUserForm'
 import Navbar2 from './components/Navbar2'
 import DailyEntryForm from './components/DailyEntryForm'
@@ -21,6 +21,7 @@ import Home from './components/Home'
 // import Login from './components/Login'
 import LandingPage from './components/LandingPage'
 import BG from './assets/bg.jpg'
+import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   bg: {
@@ -28,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
       backgroundImage: `url(${BG})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
+    },
+    appbarWrapper: {
+        width: '80%',
+        margin: '0px',
+        boxShadow: 'none'
     },
   }));
 
@@ -69,9 +75,12 @@ export default function App() {
     return(
     <BrowserRouter>
       <div className={classes.bg}>
+        <CssBaseline /> 
+          <Toolbar className={classes.appbarWrapper} > 
+            <Navbar2 /> 
+          </Toolbar>
         <Switch>
           <div>
-            <Navbar2 /> 
             {/* <Route 
               exact path='/' 
               render={props => (
@@ -100,6 +109,7 @@ export default function App() {
             <Route path="/calendar" component={CalendarContainer} />
             <Route path="/journal" component={JournalForm} />
             <Route path="/stats" component={Main} />
+            <Route path="/newuser" component={NewUserContainer} />
             <Route path="/dailyentry" component={DailyEntryForm} />
             {/* <Route component={NoMatchPage} /> */}
           </div>

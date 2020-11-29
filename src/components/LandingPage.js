@@ -87,7 +87,7 @@ import LogContainer from '../containers/LogContainer'
             </Switch> */}
             <div className={classes.root} id="homepage">
             <AppBar className={classes.appbar}>
-                <Toolbar className={classes.appbarWrapper} style={{boxShadow: 'none'}}>
+                <Toolbar className={classes.appbarWrapper} >
                     <h1 className={classes.appbarTitle}>
                         <img src={Logo} /> 
                     </h1>
@@ -102,10 +102,10 @@ import LogContainer from '../containers/LogContainer'
                 >
                 <div className={classes.container}>
                 <h1 className={classes.title}>
-                    let yourself  <br />
+                    watch yourself  <br />
                     <span className={classes.colorText}>grow</span>
                 </h1>
-                <h3>join the growth. </h3>
+                <h3>start watering yourself. </h3>
                 <Scroll to="log-in-form" smooth={true}>
                     <IconButton>
                     <KeyboardArrowDownIcon className={classes.goDown} />
@@ -115,7 +115,7 @@ import LogContainer from '../containers/LogContainer'
             </Collapse>
 
             </div>
-        <LogContainer /> 
+        <LogContainer />  
         </div>
     );
     }

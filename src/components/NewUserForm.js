@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Logo from '../assets/signinlogo1.png'
+import Paper from '@material-ui/core/Paper'
 
 const GOALS_URL = "http://localhost:3001/goals"
 
@@ -157,19 +158,17 @@ export default function NewUserForm(props) {
     }
     fetch("http://localhost:3001/users", requestPackage)
     .then(rsp => rsp.json())
-    .then(history.push("/user/home"))
+    .then(history.push("/home"))
   }
-  
-  // const testClick = (event) => {
-  //   console.log(event.target[0].value)
-  // }
+
   
   return (
     <Container component="main" maxWidth="xs">
+      <Grid container component="main" >
       <CssBaseline />
+      <Paper>
       <div className={classes.paper}>
-        <img src={Logo} style={{height: "30vh"}}/>
-
+        <img src={Logo} style={{height: "25vh"}}/>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
@@ -262,6 +261,8 @@ export default function NewUserForm(props) {
             errors ? handleErrors() : null
           }
         </div>
+      </Paper>
+    </Grid>
     </Container>
   );
 }

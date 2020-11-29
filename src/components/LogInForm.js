@@ -161,9 +161,11 @@ export default function LogInForm({checked}, props) {
               <Grid container>
   
                   <Grid item>
+                  <Button> 
                   <Link href="/newuser" variant="body2">
                       {"Don't have an account? Sign Up"}
                   </Link>
+                  </Button> 
                   </Grid>
               </Grid>
               <Box mt={5}>
