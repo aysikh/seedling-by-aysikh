@@ -113,7 +113,7 @@ export default function LogInForm({checked}, props) {
       <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
       <Grid container component="main" className={classes.grid} >
           <CssBaseline />
-          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Grid item xs={12} sm={10} md={8} component={Paper} elevation={6} square>
           <div className={classes.paper}>
               <Avatar className={classes.avatar}>
               <LockOutlinedIcon />

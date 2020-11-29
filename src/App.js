@@ -8,7 +8,7 @@ import MainContainer from './containers/MainContainer'
 // import LogInContainer from './containers/LogInContainer'
 // import NewUserContainer from './containers/NewUserContainer'
 import NewUserForm from './components/NewUserForm'
-// import Navbar from './components/Navbar'
+import Navbar2 from './components/Navbar2'
 import DailyEntryForm from './components/DailyEntryForm'
 // import Calendar from './components/Calendar'
 import HomepageContainer from './containers/HomepageContainer'
@@ -18,10 +18,21 @@ import Main from './components/Main'
 import CalendarContainer from './containers/CalendarContainer'
 // import NoMatchPage from './components/NoMatchPage'
 import Home from './components/Home'
-import Login from './components/Login'
+// import Login from './components/Login'
 import LandingPage from './components/LandingPage'
+import BG from './assets/bg.jpg'
+
+const useStyles = makeStyles((theme) => ({
+  bg: {
+      minHeight: '100vh',
+      backgroundImage: `url(${BG})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+    },
+  }));
 
 export default function App() {
+  const classes = useStyles();
 
   const [isLoggedIn, setIsLoggedIn]=useState(false)
   const [user, setUser]=useState({})
@@ -57,10 +68,10 @@ export default function App() {
 
     return(
     <BrowserRouter>
-      <div>
+      <div className={classes.bg}>
         <Switch>
           <div>
-            <MainContainer />
+            <Navbar2 /> 
             {/* <Route 
               exact path='/' 
               render={props => (
@@ -83,8 +94,9 @@ export default function App() {
               loggedInStatus={isLoggedIn}/>
               )}
             /> */}
+            <Route exact path="/" component={LandingPage} />
             <Route path="/home" component={HomepageContainer} />
-            <Route path="/user" component={MainContainer} />
+            <Route exact path="/user" component={MainContainer} />
             <Route path="/calendar" component={CalendarContainer} />
             <Route path="/journal" component={JournalForm} />
             <Route path="/stats" component={Main} />

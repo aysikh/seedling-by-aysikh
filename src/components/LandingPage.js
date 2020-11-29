@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
 import { Link as Scroll } from 'react-scroll';
+import { CssBaseline } from '@material-ui/core';
 import SortIcon from '@material-ui/icons/Sort';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Logo from '../assets/logo3.png'
@@ -15,29 +16,36 @@ import JournalForm from './JournalForm'
 import Main from './Main'
 import DailyEntryForm from './DailyEntryForm'
 import BG from '../assets/bg.jpg'
+import LogContainer from '../containers/LogContainer'
 
     const useStyles = makeStyles((theme) => ({
-        // bg: {
-        //     minHeight: '100vh',
-        //     backgroundImage: `url(${BG})`,
-        //     backgroundRepeat: 'no-repeat',
-        //     backgroundSize: 'cover',
-        //   },
+        bg: {
+            minHeight: '100vh',
+            backgroundImage: `url(${BG})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          },
         root: {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh'
+            height: '100vh',
+            boxShadow: 'none'
         },
         appbar: {
-            background: 'none',
+            backgroundColor: 'transparent',
+            boxShadow: '0px 0px 0px 0px',
+            shadows: 'none',
+            zDepthShadows: 'none'
         },
         appbarWrapper: {
             width: '80%',
             margin: '0 auto',
+            boxShadow: 'none'
         },
         appbarTitle: {
             flexGrow: '1',
+            boxShadow: 'none'
         },
         icon: {
             color: 'black',
@@ -69,7 +77,8 @@ import BG from '../assets/bg.jpg'
 
     return (
         <div>
-            <Switch>
+            <CssBaseline />
+            {/* <Switch>
                 <Route path="/logout" component={LogInContainer} />
                 <Route exact path="/user/newuser" component={NewUserForm} />
                 <Route exact path ="/user/home" component={HomepageContainer} />
@@ -77,10 +86,10 @@ import BG from '../assets/bg.jpg'
                 <Route exact path="/user/journal" component={JournalForm} />
                 <Route exact path="/user/stats" component={Main} />
                 <Route exact path ="/user/dailyentry" component={DailyEntryForm} />
-            </Switch>
+            </Switch> */}
             <div className={classes.root} id="homepage">
             <AppBar className={classes.appbar} elevation={0}>
-                <Toolbar className={classes.appbarWrapper}>
+                <Toolbar className={classes.appbarWrapper} style={{boxShadow: 'none'}}>
                     <h1 className={classes.appbarTitle}>
                         <img src={Logo} /> 
                     </h1>
@@ -106,7 +115,9 @@ import BG from '../assets/bg.jpg'
                 </Scroll>
                 </div>
             </Collapse>
+
             </div>
+        <LogContainer /> 
         </div>
     );
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -67,15 +67,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
+  const [view, setView]=useState(false);
   const [state, setState] = React.useState({right: false});
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
+
+ 
 
   const list = (anchor) => (
     <div
@@ -87,35 +89,35 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-          {<Link to="/user/home">
+          {<Link to="/home">
             <ListItem button key={"Homepage"} className={classes.text}>
             <ListItemIcon className={classes.icon} > <HomeIcon /> </ListItemIcon>
             <ListItemText primary={"Homepage"} />
             </ListItem>
           </Link>}
-          {<Link to="/user/dailyentry">
+          {<Link to="/dailyentry">
             <ListItem button key={"Add Daily Entry"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <InsertEmoticonIcon /> </ListItemIcon>
             <ListItemText primary={"Add Daily Entry"} />
             </ListItem>
           </Link>}
-          {<Link to="/user/journal">
+          {<Link to="/journal">
             <ListItem button key={"Journal Entries"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <MenuBookIcon /> </ListItemIcon>
             <ListItemText primary={"Journal Entries"} />
             </ListItem>
             </Link>}
-          {<Link to="/user/calendar">
+          {<Link to="/calendar">
             <ListItem button key={"Calendar"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <CalendarTodayIcon /> </ListItemIcon>
             <ListItemText primary={"Calendar"} />
-          </ListItem>
+            </ListItem>
           </Link>}
-          {<Link to="/user/stats">
+          {<Link to="/stats">
             <ListItem button key={"Stats"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <EqualizerIcon /> </ListItemIcon>
             <ListItemText primary={"Stats"} />
-          </ListItem>
+            </ListItem>
           </Link>}
           {<ListItem button key={"Learn"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <SchoolIcon /> </ListItemIcon>

@@ -3,10 +3,8 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import LogInContainer from './LogInContainer'
-import NewUserContainer from './NewUserContainer'
 import NewUserForm from '../components/NewUserForm'
 import Container from '@material-ui/core/Container'
-import Navbar from '../components/Navbar'
 import Navbar2 from '../components/Navbar2'
 import HomepageContainer from './HomepageContainer'
 import JournalForm from '../components/JournalForm'
@@ -29,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function MainContainer() {
+export default function MainContainer(props) {
+  
   const classes = useStyles();
 
   return (
@@ -37,8 +36,6 @@ export default function MainContainer() {
     <div className={classes.root}>
       {/* <Container maxWidth="lg"> */}
       <CssBaseline />
-      <LandingPage /> 
-      <LogContainer />
       {/* <Switch> */}
         {/* <Route exact path="/" component={MainContainer} /> */}
         {/* <Route path="/logout" component={LogInContainer} />
