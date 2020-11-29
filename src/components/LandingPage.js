@@ -15,16 +15,16 @@ import CalendarContainer from '../containers/CalendarContainer'
 import JournalForm from './JournalForm'
 import Main from './Main'
 import DailyEntryForm from './DailyEntryForm'
-import BG from '../assets/bg.jpg'
+// import BG from '../assets/bg.jpg'
 import LogContainer from '../containers/LogContainer'
 
     const useStyles = makeStyles((theme) => ({
-        bg: {
-            minHeight: '100vh',
-            backgroundImage: `url(${BG})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-          },
+        // bg: {
+        //     minHeight: '100vh',
+        //     backgroundImage: `url(${BG})`,
+        //     backgroundRepeat: 'no-repeat',
+        //     backgroundSize: 'cover',
+        //   },
         root: {
             display: 'flex',
             justifyContent: 'center',

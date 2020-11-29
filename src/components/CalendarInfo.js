@@ -1,21 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
 
 import Bear1 from '../assets/bear1.png'
 import Bear2 from '../assets/bear2.png'
 import Bear3 from '../assets/bear3.png'
 import Bear4 from '../assets/bear4.png'
 import Bear5 from '../assets/bear5.png'
-
 import { makeStyles } from '@material-ui/core/styles';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import Button from '@material-ui/core/Button'
+import axios from 'axios'
+
+const PROMPTS_URL = "http://localhost:3001/prompts"
 
 const useStyles = makeStyles((theme) => ({
     image: {
-      height: "20vh",
+      height: "16vh",
     },
+    icon: {
+        fontSize: 'small',
+    }
   }));
 
+
 const CalendarInfo = (props) => {
-  const classes = useStyles();
+    const classes = useStyles();
+    const [prompts, setPrompts] = useState("");
+
+    const getPrompts = async () => {
+        try {
+          let userPrompts = await 
+          axios.get(PROMPTS_URL)
+        //   console.log(userPrompts.data)
+          setPrompts(userPrompts.data); //set state
+  
+        } catch (err) {
+          alert(err.message);
+        }
+      };
+      
+      useEffect(() =>{
+          getPrompts()
+      }, [])
+
     const entryContent = () => {
         let something = props.parsedDateEntry()
         let x = something.filter(entry => entry.date === props.selectedDate)
@@ -44,31 +71,45 @@ const CalendarInfo = (props) => {
         }
     }
 
+    
     const entryPrompt = () => {
-        let something = props.parsedDateEntry()
-        let z = something.filter(entry => entry.date == props.selectedDate)
-        if (z[0]){
-            return z[0].prompt
+        let dailyentry = props.parsedDateEntry();
+        let dateentry = dailyentry.filter(entry => entry.date == props.selectedDate)
+        // let filteredPrompts = prompts.filter()
+        for (let i = 0; i < prompts.length; i++){
+            if (prompts[i].id == dateentry[0].prompt) {
+                return prompts[i].statement
+            }
         }
+        // if (dateentry[0]){
+        //     console.log(dateentry[0].prompt)
+        //     console.log(prompts)
+        //     {prompts.id == dateentry[0].prompt ? console.log(prompts.statement) : null}
+        //     return prompts.statement
+
+        //     return z[0].prompt
+        // }
+        
     }
 
     return (
         <div>
+            <center>
+                <Button> <EditOutlinedIcon /></Button> 
+                <Button> <DeleteOutlinedIcon /></Button>
+            </center>
+            <center>
              <h2>
                 {props.selectedDate}
-                <br /> 
+            </h2>
                 <div>
                     {entryRating()}
-                    <br /> 
-                    prompt: 
+                    <h4><b>today's prompt: </b></h4>
                     {entryPrompt()}
-                    <br />
-                    content: 
+                    <h4><b>today's content: </b></h4> 
                     {entryContent()}
-                    <br /> 
-
                 </div>
-            </h2>
+            </center>
         </div>
     )
 }

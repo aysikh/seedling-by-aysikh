@@ -161,7 +161,6 @@ export default function NewUserForm(props) {
     .then(history.push("/home"))
   }
 
-  
   return (
     <Container component="main" maxWidth="xs">
       <Grid container component="main" >

@@ -3,10 +3,10 @@ import { useHistory } from 'react-router-dom'
 import Calendar from '../components/Calendar'
 import CalendarInfo from '../components/CalendarInfo'
 import axios from 'axios'
-
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Paper from '@material-ui/core/Paper';
+// import BG from '../assets/bg.jpg'
 
 const DAILY_ENTRY_URL = "http://localhost:3001/daily_entries"
 
@@ -15,6 +15,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px",
     borderRadius: "3px"
   },
+  // bg: {
+  //   minHeight: '100vh',
+  //   backgroundImage: `url(${BG})`,
+  //   backgroundRepeat: 'repeat',
+  //   backgroundSize: 'cover',
+  // },
 }));
 
 const CalendarContainer = () => {
@@ -28,7 +34,7 @@ const CalendarContainer = () => {
     try {
       const userDailyEntries = await
       axios.get(DAILY_ENTRY_URL)
-      console.log(userDailyEntries.data)
+      // console.log(userDailyEntries.data)
       setDailyEntries(userDailyEntries.data)
     } catch (err){
       alert(err.message)
@@ -54,13 +60,13 @@ const CalendarContainer = () => {
   const parsedDateEntry = () => {
     let parsedDate = []
     let dates = []
-    // let info = {}
     if (dailyentries){
         dailyentries.map(dailyentry => {
+          // console.log(dailyentry)
           let info = {}
           info.date = dailyentry.created_at
           info.rating = dailyentry.rating 
-          info.prompt = dailyentry.prompt
+          info.prompt = dailyentry.prompt_id
           info.content = dailyentry.content
           dates.push(info)
         })
@@ -112,6 +118,8 @@ const CalendarContainer = () => {
             <CalendarInfo 
               selectedDate={selectedDate.toString()}
               parsedDateEntry={parsedDateEntry}
+              setDailyEntries={setDailyEntries}
+              dailyentries={dailyentries}
             />
           </div>
         )}

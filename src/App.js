@@ -76,9 +76,9 @@ export default function App() {
     <BrowserRouter>
       <div className={classes.bg}>
         <CssBaseline /> 
-          <Toolbar className={classes.appbarWrapper} > 
+          {/* <Toolbar className={classes.appbarWrapper} >  */}
             <Navbar2 /> 
-          </Toolbar>
+          {/* </Toolbar> */}
         <Switch>
           <div>
             {/* <Route 

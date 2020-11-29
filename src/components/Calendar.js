@@ -8,21 +8,23 @@ const Calendar = (props) => {
     const header = () => {
         const dateFormat = "MMMM yyyy";
         return (
-            <div className="header row flex-middle">
-                <div className="column col-start">
-                    <div className="icon" onClick={prevMonth}>
-                        chevron_left
+            <center>
+                <div className="header row flex-middle">
+                    <div className="column col-start">
+                        <div className="icon" onClick={prevMonth}>
+                            chevron_left
+                        </div>
+                    </div>
+                    <div className="column col-center">
+                        <span>{dateFns.format(props.currentDate, dateFormat)}</span>
+                    </div>
+                    <div className="column col-end">
+                        <div className="icon" onClick={nextMonth}>
+                            chevron_right
+                        </div>
                     </div>
                 </div>
-                <div className="column col-center">
-                    <span>{dateFns.format(props.currentDate, dateFormat)}</span>
-                </div>
-                <div className="column col-end">
-                    <div className="icon" onClick={nextMonth}>
-                        chevron_right
-                    </div>
-                </div>
-            </div>
+            </center>
         );
     };
     const days = () => {

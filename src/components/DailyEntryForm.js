@@ -7,9 +7,6 @@
 
   import axios from 'axios'
   import { makeStyles } from '@material-ui/core/styles';
-  // import Modal from '@material-ui/core/Modal';
-  // import Backdrop from '@material-ui/core/Backdrop';
-  // import Fade from '@material-ui/core/Fade';
   import Button from '@material-ui/core/Button'
   import TextField from '@material-ui/core/TextField';
   import Typography from '@material-ui/core/Typography';
@@ -146,7 +143,7 @@
 
     const handleSubmit = (event) => {
       event.preventDefault()
-      console.log(event)
+      // console.log(event)
       let c = content.split('')
       if (c.length > 0){
         let requestPackage ={
@@ -161,29 +158,15 @@
         }
         fetch("http://localhost:3001/daily_entries", requestPackage)
         .then(rsp => rsp.json())
-        .then(history.push("/user/home"))
+        .then(history.push("/calendar"))
       }
   }
-
     
     return (
       <div>
-        {/* <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          className={classes.modal}
-          open={open}
-          onClose={handleClose}
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
-          }}
-        >
-          <Fade in={open}> */}
           <br /> <br />
           
-            <div className={classes.paper}>
+          <div className={classes.paper}>
           <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}>
           <label><Typography variant="h3"> How are you feeling right now?</Typography></label>
           <br /> 
@@ -263,9 +246,7 @@
       {/* </form> */}
           </center>
             </form>
-            </div>
-          {/* </Fade> */}
-        {/* </Modal> */}
+          </div>
       </div>
     );
   }
