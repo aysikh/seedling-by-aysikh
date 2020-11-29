@@ -35,8 +35,6 @@ import LogContainer from '../containers/LogContainer'
         appbar: {
             backgroundColor: 'transparent',
             boxShadow: '0px 0px 0px 0px',
-            shadows: 'none',
-            zDepthShadows: 'none'
         },
         appbarWrapper: {
             width: '80%',
@@ -88,7 +86,7 @@ import LogContainer from '../containers/LogContainer'
                 <Route exact path ="/user/dailyentry" component={DailyEntryForm} />
             </Switch> */}
             <div className={classes.root} id="homepage">
-            <AppBar className={classes.appbar} elevation={0}>
+            <AppBar className={classes.appbar}>
                 <Toolbar className={classes.appbarWrapper} style={{boxShadow: 'none'}}>
                     <h1 className={classes.appbarTitle}>
                         <img src={Logo} /> 
