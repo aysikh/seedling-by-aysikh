@@ -13,8 +13,8 @@ import axios from 'axios'
 import EditDailyEntryForm from './EditDailyEntryForm'
 import { NavLink, Redirect, Link } from 'react-router-dom'
 
-
 const PROMPTS_URL = "http://localhost:3001/prompts"
+
 
 const useStyles = makeStyles((theme) => ({
     image: {
@@ -31,7 +31,7 @@ const CalendarInfo = (props) => {
     const classes = useStyles();
     const [prompts, setPrompts] = useState("");
     const [view, setView] = useState(false);
-    const [ID, setID] = useState(0)
+    const [ID, setID] = useState({})
     const [randomPrompt, setRandomPrompt] = useState("")
     const [randomPromptID, setRandomPromptID]=useState("")
 
@@ -115,6 +115,16 @@ const CalendarInfo = (props) => {
         setView(!view) 
     }
 
+    const handleDelete = () => {
+        let deleteID = entryID().id
+        fetch(`http://localhost:3001/daily_entries/${deleteID}`, {
+        method: 'DELETE',
+    })
+        .then(rsp => rsp.json())
+        .then(window.location.reload())
+
+    }
+
     return (
         <div>
             {view ? <EditDailyEntryForm setView={setView} findID={entryID}/> : null}
@@ -123,7 +133,7 @@ const CalendarInfo = (props) => {
                     <EditOutlinedIcon onClick={handleEdit} />
                 </Button> 
                 <Button> 
-                    <DeleteOutlinedIcon />
+                    <DeleteOutlinedIcon onClick={handleDelete}/>
                 </Button>
             </center>
             <center>

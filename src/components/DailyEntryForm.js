@@ -149,6 +149,7 @@
         fetch("http://localhost:3001/daily_entries", requestPackage)
         .then(rsp => rsp.json())
         .then(history.push("/calendar"))
+        //history.push("/calendar")
       }
   }
     
