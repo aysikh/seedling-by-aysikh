@@ -30,11 +30,15 @@ import LogContainer from '../containers/LogContainer'
             justifyContent: 'center',
             alignItems: 'center',
             height: '100vh',
-            boxShadow: 'none'
+            boxShadow: 'none',
+            margin: '0',
+            border: '0'
         },
         appbar: {
             backgroundColor: 'transparent',
             boxShadow: '0px 0px 0px 0px',
+            margin: '0',
+            border: '0'
         },
         appbarWrapper: {
             width: '80%',
@@ -63,6 +67,10 @@ import LogContainer from '../containers/LogContainer'
             color: '#1a904b',
             fontSize: '4rem',
         },
+        div:{
+            margin: '0',
+            border: '0'
+        }
         }));
 
     export default function Header() {
@@ -74,7 +82,7 @@ import LogContainer from '../containers/LogContainer'
 
 
     return (
-        <div>
+        <div className={classes.div}>
             <CssBaseline />
             {/* <Switch>
                 <Route path="/logout" component={LogInContainer} />

@@ -10,6 +10,9 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
+import EditDailyEntryForm from './EditDailyEntryForm'
+import { NavLink, Redirect, Link } from 'react-router-dom'
+
 
 const PROMPTS_URL = "http://localhost:3001/prompts"
 
@@ -24,8 +27,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 const CalendarInfo = (props) => {
+
     const classes = useStyles();
     const [prompts, setPrompts] = useState("");
+    const [view, setView] = useState(false);
+    const [ID, setID] = useState(0)
 
     const getPrompts = async () => {
         try {
@@ -43,8 +49,16 @@ const CalendarInfo = (props) => {
           getPrompts()
       }, [])
 
+    const entryID = () => {
+        let dailyentry = props.parsedDateEntry()
+        dailyentry = dailyentry.filter(entry => entry.date == props.selectedDate)[0]
+        setID(dailyentry)
+        return dailyentry
+    }
+
     const entryContent = () => {
         let something = props.parsedDateEntry()
+        // console.log(something)
         let x = something.filter(entry => entry.date === props.selectedDate)
         if (x[0]){
             return x[0].content
@@ -70,7 +84,6 @@ const CalendarInfo = (props) => {
             return <img src={Bear1} className={classes.image}/>
         }
     }
-
     
     const entryPrompt = () => {
         let dailyentry = props.parsedDateEntry();
@@ -92,11 +105,20 @@ const CalendarInfo = (props) => {
         
     }
 
+    const handleEdit = () => {
+        setView(!view) 
+    }
+
     return (
         <div>
+            {view ? <EditDailyEntryForm setView={setView} findID={entryID}/> : null}
             <center>
-                <Button> <EditOutlinedIcon /></Button> 
-                <Button> <DeleteOutlinedIcon /></Button>
+                <Button> 
+                    <EditOutlinedIcon onClick={handleEdit} />
+                </Button> 
+                <Button> 
+                    <DeleteOutlinedIcon />
+                </Button>
             </center>
             <center>
              <h2>

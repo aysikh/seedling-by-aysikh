@@ -16,7 +16,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
 const PROMPTS_URL = "http://localhost:3001/prompts"
-const MOODS_URL = "http://localhost:3001/moods"
 const USERS_URL = "http://localhost:3001/users/1"
 
 const useStyles = makeStyles((theme) => ({
@@ -58,13 +57,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function MoodForm() {
+export default function EditDailyEntryForm(props) {
   let history = useHistory();
 
   const [prompts, setPrompts]=useState([])
-  const [randomPrompt, setRandomPrompt]=useState("")
-  const [randomPromptID, setRandomPromptID]=useState("")
-  const [moods, setMoods]=useState([])
   const [rating, setRating]=useState(0)
   const [selected, setSelected] = useState(0)
   const [content, setContent]=useState("")
@@ -72,6 +68,7 @@ export default function MoodForm() {
   const [open, setOpen] = React.useState(true);
   const [user, setUser] = React.useState("")
   const userID = user
+  const [currentUser, setCurrentUser]=useState({})
   // const promptID = randomPrompt.id
 
   const getPrompts = async () => {
@@ -86,41 +83,15 @@ export default function MoodForm() {
     }
   };
   
-  const getMoods = async () => {
-    try {
-      const userMoods = await
-      axios.get(MOODS_URL)
-      // console.log(userMoods.data)
-      setMoods(userMoods.data);
-    } catch(err){
-      alert(err.message)
-    }
-  }
-
   const getUsers = async () => {
-    try { 
-      let user = await
-      axios.get(USERS_URL)
-      // console.log(user.data.user.id)
-      setUser(user.data.user.id)
-    } catch(err){
-      alert(err.message)
-    }
+    setCurrentUser(props.findID())
   }
 
   useEffect(() => {
     getPrompts()
-    getMoods()
     getUsers()
   }, [])
 
-  useEffect(()=>{
-    if (prompts.length > 0){
-      let randomIndex = Math.floor(Math.random() * prompts.length); 
-      setRandomPrompt(prompts[randomIndex].statement);
-      setRandomPromptID(randomIndex)
-    }
-  },[prompts]) //this will run when prompts changes
 
   useEffect (() => {
     console.log("selected: ", selected)
@@ -134,6 +105,10 @@ export default function MoodForm() {
     setOpen(false);
   };
 
+  const editRating = (event) => {
+      setSelected(event.target.value)
+  }
+
   const handleClick = (event) => {
     event.preventDefault()
     setRating(event.target.value)
@@ -146,23 +121,20 @@ export default function MoodForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(event)
-    let c = content.split('')
-    if (c.length > 0){
+    props.setView(false)
+    let entryID = props.findID().id
       let requestPackage ={
         headers: {'Content-Type':'application/json'},
         method: 'PATCH',
         body: JSON.stringify({
           rating: selected,
           content: content,
-          user_id: userID,
-          prompt_id: randomPromptID
         })
       }
-      fetch("http://localhost:3001/daily_entries", requestPackage)
+      fetch(`http://localhost:3001/daily_entries/${entryID}`, requestPackage)
       .then(rsp => rsp.json())
-      .then(history.push("/calendar"))
-    }
+      .then(window.location.reload())
+    
 }
   
   return (
@@ -185,12 +157,12 @@ export default function MoodForm() {
         <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}>
         <label><Typography variant="h3"> How are you feeling right now?</Typography></label>
         <br /> 
-        {/* style={{width: "10%", height: "20%", position: 'absolute'}} */}
         <input 
           value={5} 
           type="image" 
           src={Bear1} 
           onClick={handleClick}
+          onChange={editRating}
           className={selected == 5 ? classes.withBorder : classes.noBorder}
           className={classes.image}
           />
@@ -199,6 +171,7 @@ export default function MoodForm() {
             type="image" 
             src={Bear2} 
             onClick={handleClick} 
+            onChange={editRating}
             className={selected == 4 ? classes.withBorder : classes.noBorder}
             className={classes.image}
           />
@@ -207,6 +180,7 @@ export default function MoodForm() {
           type="image" 
           src={Bear3} 
           onClick={handleClick} 
+          onChange={editRating}
           className={selected == 3 ? classes.withBorder : classes.noBorder}
           className={classes.image}
         />
@@ -215,6 +189,7 @@ export default function MoodForm() {
           type="image" 
           src={Bear4} 
           onClick={handleClick} 
+          onChange={editRating}
           className={selected == 2 ? classes.withBorder : classes.noBorder}
           className={classes.image}
         />
@@ -223,6 +198,7 @@ export default function MoodForm() {
           type="image" 
           src={Bear5} 
           onClick={handleClick} 
+          onChange={editRating}
           className={selected == 1 ? classes.withBorder : classes.noBorder}
           className={classes.image}
         />
@@ -230,7 +206,8 @@ export default function MoodForm() {
         <br /> 
         <br />
         <center>
-        <label><h1>{randomPrompt}</h1></label> 
+        <label>Prompt: </label> 
+        
         <br />
         {/* <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}> */}
       <div>
@@ -244,18 +221,7 @@ export default function MoodForm() {
           variant="outlined"
         />
       </div>
-      {/* <label><h2>What emotions are you feeling?</h2></label>
-      <Grid container item xs={12}>
-      {moods.map(mood =>
-        <Grid item xs={2}>
-          <FormControlLabel
-          key={mood.id}
-          control={<Checkbox value={mood.name} color="secondary"/>}
-          label={mood.name}
-          />
-        </Grid>)}
-        </Grid> */}
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary" >
           Submit
         </Button>
     {/* </form> */}

@@ -162,7 +162,7 @@ export default function LogInForm({checked}, props) {
   
                   <Grid item>
                   <Button> 
-                  <Link href="/newuser" variant="body2">
+                  <Link href="/newuser" variant="body2" style={{textDecoration: 'none'}}>
                       {"Don't have an account? Sign Up"}
                   </Link>
                   </Button> 

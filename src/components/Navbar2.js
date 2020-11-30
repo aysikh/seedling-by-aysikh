@@ -62,6 +62,9 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     color: "#0D791E"
+  },
+  link: {
+    textDecoration: 'none',
   }
 }));
 
@@ -89,31 +92,31 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-          {<Link to="/home">
+          {<Link to="/home" className={classes.link}>
             <ListItem button key={"Homepage"} className={classes.text}>
             <ListItemIcon className={classes.icon} > <HomeIcon /> </ListItemIcon>
             <ListItemText primary={"Homepage"} />
             </ListItem>
           </Link>}
-          {<Link to="/dailyentry">
+          {<Link to="/dailyentry" className={classes.link}>
             <ListItem button key={"Add Daily Entry"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <InsertEmoticonIcon /> </ListItemIcon>
             <ListItemText primary={"Add Daily Entry"} />
             </ListItem>
           </Link>}
-          {<Link to="/journal">
+          {<Link to="/journal" className={classes.link}>
             <ListItem button key={"Journal Entries"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <MenuBookIcon /> </ListItemIcon>
             <ListItemText primary={"Journal Entries"} />
             </ListItem>
             </Link>}
-          {<Link to="/calendar">
+          {<Link to="/calendar" className={classes.link}>
             <ListItem button key={"Calendar"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <CalendarTodayIcon /> </ListItemIcon>
             <ListItemText primary={"Calendar"} />
             </ListItem>
           </Link>}
-          {<Link to="/stats">
+          {<Link to="/stats" className={classes.link}>
             <ListItem button key={"Stats"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <EqualizerIcon /> </ListItemIcon>
             <ListItemText primary={"Stats"} />
@@ -125,7 +128,7 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>}
         </List>
         <Divider />
-        {<NavLink to="/">
+        {<NavLink to="/" className={classes.link}>
           <ListItem button key={"Sign Out"} className={classes.text}>
             <ListItemIcon className={classes.icon}> <ExitToAppIcon /> </ListItemIcon>
             <ListItemText primary={"Sign Out"} />
