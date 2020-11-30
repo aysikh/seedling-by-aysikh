@@ -21,6 +21,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import { NavLink, Redirect, Link } from 'react-router-dom'
 import SortIcon from '@material-ui/icons/Sort';
+import Image from '../assets/navbar2.gif'
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -54,14 +55,16 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: "black",
-    fontSize: '3rem',
+    fontSize: '8rem',
     fontWeight: '550',
     lineHeight: '3',
     letterSpacing: '0.47em',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    textAlign: 'right'
   },
   icon: {
-    color: "#0D791E"
+    color: "#0D791E",
+    marginRight: 'auto'
   },
   link: {
     textDecoration: 'none',
@@ -94,46 +97,47 @@ export default function SwipeableTemporaryDrawer() {
       <List>
           {<Link to="/home" className={classes.link}>
             <ListItem button key={"Homepage"} className={classes.text}>
-            <ListItemIcon className={classes.icon} > <HomeIcon /> </ListItemIcon>
+            {/* <ListItemIcon className={classes.icon} > <HomeIcon /> </ListItemIcon> */}
             <ListItemText primary={"Homepage"} />
             </ListItem>
           </Link>}
           {<Link to="/dailyentry" className={classes.link}>
             <ListItem button key={"Add Daily Entry"} className={classes.text}>
-            <ListItemIcon className={classes.icon}> <InsertEmoticonIcon /> </ListItemIcon>
+            {/* <ListItemIcon className={classes.icon}> <InsertEmoticonIcon /> </ListItemIcon> */}
             <ListItemText primary={"Add Daily Entry"} />
             </ListItem>
           </Link>}
           {<Link to="/journal" className={classes.link}>
             <ListItem button key={"Journal Entries"} className={classes.text}>
-            <ListItemIcon className={classes.icon}> <MenuBookIcon /> </ListItemIcon>
+            {/* <ListItemIcon className={classes.icon}> <MenuBookIcon /> </ListItemIcon> */}
             <ListItemText primary={"Journal Entries"} />
             </ListItem>
             </Link>}
           {<Link to="/calendar" className={classes.link}>
             <ListItem button key={"Calendar"} className={classes.text}>
-            <ListItemIcon className={classes.icon}> <CalendarTodayIcon /> </ListItemIcon>
+            {/* <ListItemIcon className={classes.icon}> <CalendarTodayIcon /> </ListItemIcon> */}
             <ListItemText primary={"Calendar"} />
             </ListItem>
           </Link>}
           {<Link to="/stats" className={classes.link}>
             <ListItem button key={"Stats"} className={classes.text}>
-            <ListItemIcon className={classes.icon}> <EqualizerIcon /> </ListItemIcon>
+            {/* <ListItemIcon className={classes.icon}> <EqualizerIcon /> </ListItemIcon> */}
             <ListItemText primary={"Stats"} />
             </ListItem>
           </Link>}
-          {<ListItem button key={"Learn"} className={classes.text}>
-            <ListItemIcon className={classes.icon}> <SchoolIcon /> </ListItemIcon>
-            <ListItemText primary={"Learn"} />
-          </ListItem>}
         </List>
         <Divider />
         {<NavLink to="/" className={classes.link}>
           <ListItem button key={"Sign Out"} className={classes.text}>
-            <ListItemIcon className={classes.icon}> <ExitToAppIcon /> </ListItemIcon>
+            <ListItemIcon> <ExitToAppIcon /> </ListItemIcon>
             <ListItemText primary={"Sign Out"} />
           </ListItem>
         </NavLink>}
+        <div>
+          <center>
+            <img src={Image} style={{height: '15.5rem', position: 'relative', marginBottom: '-725px', paddingBottom: '-250px'}}/>
+          </center>
+        </div>
     </div>
   );
           

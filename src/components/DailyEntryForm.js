@@ -159,7 +159,7 @@
           <div className={classes.paper}>
           <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}>
           <label><Typography variant="h3"><b> How are you feeling right now?</b></Typography></label>
-          <br /> 
+          <br /> <br /> <br />
           <center>
           <input 
             value={5} 

@@ -61,7 +61,7 @@ const CalendarInfo = (props) => {
 
     const entryID = () => {
         let dailyentry = props.parsedDateEntry()
-        dailyentry = dailyentry.filter(entry => entry.date == props.selectedDate)[0]
+        dailyentry = dailyentry.filter(entry => entry.date === props.selectedDate)[0]
         setID(dailyentry)
         return dailyentry
     }
@@ -99,13 +99,24 @@ const CalendarInfo = (props) => {
     }
     
     const entryPrompt = () => {
-        let dailyentry = props.parsedDateEntry();
-        let dateentry = dailyentry.filter(entry => entry.date == props.selectedDate)
-        // let filteredPrompts = prompts.filter()
+        let dailyentry = props.parsedDateEntry(); 
+        let dateentry = dailyentry.filter(entry => entry.date === props.selectedDate)
+        // console.log(dateentry[0].date)
+        // console.log(randomPrompt)
         for (let i = 0; i < prompts.length; i++){
-            if (prompts[i].id == dateentry[0].prompt) {
+            // if (prompts[i].id === dateentry[0].prompt) {
+            //     return prompts[i].statement
+            // }
+            // else if (props.selectedDate !== dateentry[0].date){
+            //     return randomPrompt
+            // }
+            if(dateentry !== props.selectedDate) {
+                return randomPrompt
+            }
+            else if(prompts[i].id === dateentry[0].prompt){
                 return prompts[i].statement
             }
+            // if props.selected does not have a dateentry, then return prompt
             // else if dailyentry does not have a prompt then generate a random prompt
         }
 

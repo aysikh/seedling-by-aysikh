@@ -61,9 +61,9 @@ export default function LogInForm({checked}, props) {
   const [password, setPassword]=useState("")
   const [errors, setErrors]=useState("")
 
-  useEffect(()=> {
-    return props.loggedInStatus ? redirect() : null
-  }, [])
+  // useEffect(()=> {
+  //   return props.loggedInStatus ? redirect() : null
+  // }, [])
 
   const handleEmailChange = (event) => {
       setEmail(event.target.value)
@@ -80,22 +80,23 @@ export default function LogInForm({checked}, props) {
           email: email,
           password: password
         }
-        
-    axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
-        .then(response => {
-          if (response.data.logged_in) {
-            props.handleLogin(response.data)
-            redirect()
-          } else {
-            setErrors({errors: response.data.errors})
-          }
-        })
-        .catch(error => console.log('api errors:', error))
-      };
-
-    const redirect = () => {
-        props.history.push('/')
       }
+        
+    // axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+    //     .then(response => {
+    //       if (response.data.logged_in) {
+    //         props.handleLogin(response.data)
+    //         redirect()
+    //       } else {
+    //         setErrors({errors: response.data.errors})
+    //       }
+    //     })
+    //     .catch(error => console.log('api errors:', error))
+    //   };
+
+    // const redirect = () => {
+    //     props.history.push('/')
+    //   }
 
     const handleErrors = () => {
         return (
@@ -121,7 +122,7 @@ export default function LogInForm({checked}, props) {
               <Typography component="h1" variant="h5">
               Sign in
               </Typography>
-              <form className={classes.form} noValidate>
+              <form className={classes.form} noValidate onSubmit={handleSubmit}>
               <TextField
                   variant="outlined"
                   margin="normal"
@@ -149,17 +150,22 @@ export default function LogInForm({checked}, props) {
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
               />
-              <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-              >
-                  Sign In
-              </Button>
+              <div>
+                <center>
+                  <Button 
+                    fullWidth 
+                    color='primary' 
+                    variant='contained' 
+                    type='submit' 
+                    className={classes.submit}
+                    >
+                    <Link href="/home" style={{textDecoration: 'none'}}>
+                        {"Sign In"}
+                    </Link>
+                  </Button>
+                </center>
+              </div>
               <Grid container>
-  
                   <Grid item>
                   <Button> 
                   <Link href="/newuser" variant="body2" style={{textDecoration: 'none'}}>
@@ -182,5 +188,5 @@ export default function LogInForm({checked}, props) {
       </Grid>
    </Collapse>
     )
-
+  
 }
