@@ -8,15 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import HomeIcon from '@material-ui/icons/Home';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
-import SchoolIcon from '@material-ui/icons/School';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import { NavLink, Redirect, Link } from 'react-router-dom'
@@ -39,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen
     }),
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  // menuButton: {
+  //   marginRight: theme.spacing(2),
+  // },
   hide: {
     display: 'none',
   },
@@ -145,7 +137,14 @@ export default function SwipeableTemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <IconButton><SortIcon onClick={toggleDrawer(anchor, true)}>{anchor}</SortIcon></IconButton>
+          <IconButton style={{marginLeft: '100rem', marginTop: '2rem', color: 'green'}}>
+            <SortIcon 
+            onClick={toggleDrawer(anchor, true)}
+            style={{fontSize: '3rem'}}
+            >
+              {anchor}
+            </SortIcon>
+            </IconButton>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}

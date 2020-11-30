@@ -5,23 +5,25 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import './App.css'
 import MainContainer from './containers/MainContainer'
-// import LogInContainer from './containers/LogInContainer'
 import NewUserContainer from './containers/NewUserContainer'
-import NewUserForm from './components/NewUserForm'
 import Navbar2 from './components/Navbar2'
 import DailyEntryForm from './components/DailyEntryForm'
-// import Calendar from './components/Calendar'
-import HomepageContainer from './containers/HomepageContainer'
-import JournalForm from './components/JournalForm'
-// import Stats from './components/Stats'
-import Main from './components/Main'
-import CalendarContainer from './containers/CalendarContainer'
-// import NoMatchPage from './components/NoMatchPage'
-import Home from './components/Home'
-// import Login from './components/Login'
 import LandingPage from './components/LandingPage'
 import BG from './assets/bg.jpg'
-import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
+import JournalContainer from './containers/JournalContainer'
+import Main from './components/Main'
+import HomepageContainer from './containers/HomepageContainer'
+import CalendarContainer from './containers/CalendarContainer'
+import JournalForm from './components/JournalForm'
+// import Calendar from './components/Calendar'
+// import LogInContainer from './containers/LogInContainer'
+// import NewUserForm from './components/NewUserForm'
+// import Stats from './components/Stats'
+// import Home from './components/Home'
+// import NoMatchPage from './components/NoMatchPage'
+// import Login from './components/Login'
+// import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   bg: {
@@ -107,7 +109,7 @@ export default function App() {
             <Route path="/home" component={HomepageContainer} />
             <Route exact path="/user" component={MainContainer} />
             <Route path="/calendar" component={CalendarContainer} />
-            <Route path="/journal" component={JournalForm} />
+            <Route path="/journal" component={JournalContainer} />
             <Route path="/stats" component={Main} />
             <Route path="/newuser" component={NewUserContainer} />
             <Route path="/dailyentry" component={DailyEntryForm} />

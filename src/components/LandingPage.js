@@ -97,7 +97,7 @@ import LogContainer from '../containers/LogContainer'
             <AppBar className={classes.appbar}>
                 <Toolbar className={classes.appbarWrapper} >
                     <h1 className={classes.appbarTitle}>
-                        <img src={Logo} /> 
+                        <img src={Logo} style={{marginLeft: '-30px'}}/> 
                     </h1>
                     <Navbar2 />
                 </Toolbar>

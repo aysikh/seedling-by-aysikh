@@ -18,18 +18,26 @@ export default function JournalForm() {
   const useStyles = makeStyles((theme) => ({
     paper: {
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
+      border: '1px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       display: "absolute",
       left: "20%",
-      height: "85vh",
+      height: "80vh",
       width: "120vh"
     },
-    textField: {
-      height: "150%",
-      width: "100%"
-    }, 
+    submit: {
+      // marginLeft: '20rem',
+      fontSize: '1.3rem',
+      float: 'right',
+      margin: '3px'
+    },
+    cancel: {
+      // marginLeft: '30rem',
+      fontSize: '1.3rem',
+      float: 'right',
+      margin: '3px'
+    },
     root: {
       '& > *': {
         margin: theme.spacing(1),
@@ -40,10 +48,10 @@ export default function JournalForm() {
       padding: theme.spacing(2)
     },
     popper: {
-      width: 500,
+      minWidth: 550,
     }, 
     icon: {
-      fontSize: "3rem"
+      fontSize: "5.5rem"
     }
   }))
 
@@ -66,30 +74,39 @@ export default function JournalForm() {
           <Paper>
             <Typography className={classes.typography}>
             <div>
-              <br />
               <Container component="main" maxWidth="s">
-              <Paper elevation={3} className={classes.paper}>
-              <TextField id="outlined-basic" label="Title" variant="outlined" />
-                <br />
-                <br />
-                <div>
-                <TextField
-                  className={classes.textField}
-                  id="outlined-multiline-static"
-                  label="Your response"
-                  multiline
-                  rows={30}
-                  variant="outlined"
-                />
-              </div>
-              <br />
-                <Button type="submit" variant="contained" color="primary">
-                  Submit
-                </Button> 
-                <Button style={{position: "right"}} variant="contained" color="secondary" onClick={handleClick('right-start')}>
-                  Close
-                </Button>
-              </Paper>
+                <Paper elevation={3} className={classes.paper}>
+                  <TextField 
+                    fullWidth
+                    id="outlined-basic" 
+                    label="Title" 
+                    variant="outlined" />
+                    <br /> <br />
+                    
+                  <TextField
+                    fullWidth
+                    id="outlined-multiline-static"
+                    label="Your response"
+                    multiline
+                    rows={30}
+                    variant="outlined"
+                  />
+                    <br/> <br/> 
+                    <Button 
+                      className={classes.cancel}
+                      variant="contained" 
+                      color="secondary" 
+                      onClick={handleClick('right-start')}>
+                      Close
+                    </Button>
+                    <Button 
+                      className={classes.submit}
+                      type="submit" 
+                      variant="contained" 
+                      color="primary">
+                      Submit
+                    </Button> 
+                </Paper>
               </Container>
             </div>
             </Typography>
@@ -99,7 +116,11 @@ export default function JournalForm() {
     </Popper>
     <div>
       <br />
-      <Grid item container xs={10} alignItems="flex-end" direction="column" style={{backgroundColor: "gray", position: "absolute"}}>
+      <Grid 
+        item container xs={10} 
+        alignItems="flex-end" 
+        direction="column" 
+        style={{position: "absolute", maxWidth: '15%'}}>
         <Grid item>
           <Button onClick={handleClick('right-start')}><AddCircleIcon className={classes.icon}/></Button>
         </Grid>
