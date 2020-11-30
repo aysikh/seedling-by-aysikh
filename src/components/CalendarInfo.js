@@ -32,6 +32,8 @@ const CalendarInfo = (props) => {
     const [prompts, setPrompts] = useState("");
     const [view, setView] = useState(false);
     const [ID, setID] = useState(0)
+    const [randomPrompt, setRandomPrompt] = useState("")
+    const [randomPromptID, setRandomPromptID]=useState("")
 
     const getPrompts = async () => {
         try {
@@ -49,6 +51,14 @@ const CalendarInfo = (props) => {
           getPrompts()
       }, [])
 
+      useEffect(()=>{
+        if (prompts.length > 0){
+          let randomIndex = Math.floor(Math.random() * prompts.length); 
+          setRandomPrompt(prompts[randomIndex].statement);
+          setRandomPromptID(randomIndex)
+        }
+      },[prompts])
+
     const entryID = () => {
         let dailyentry = props.parsedDateEntry()
         dailyentry = dailyentry.filter(entry => entry.date == props.selectedDate)[0]
@@ -62,6 +72,9 @@ const CalendarInfo = (props) => {
         let x = something.filter(entry => entry.date === props.selectedDate)
         if (x[0]){
             return x[0].content
+        }
+        else {
+            return randomPrompt
         }
     }
 
@@ -93,16 +106,9 @@ const CalendarInfo = (props) => {
             if (prompts[i].id == dateentry[0].prompt) {
                 return prompts[i].statement
             }
+            // else if dailyentry does not have a prompt then generate a random prompt
         }
-        // if (dateentry[0]){
-        //     console.log(dateentry[0].prompt)
-        //     console.log(prompts)
-        //     {prompts.id == dateentry[0].prompt ? console.log(prompts.statement) : null}
-        //     return prompts.statement
 
-        //     return z[0].prompt
-        // }
-        
     }
 
     const handleEdit = () => {

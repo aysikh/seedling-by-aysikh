@@ -13,7 +13,7 @@
   import { useHistory } from 'react-router-dom'
 
   const PROMPTS_URL = "http://localhost:3001/prompts"
-  const MOODS_URL = "http://localhost:3001/moods"
+  // const MOODS_URL = "http://localhost:3001/moods"
   const USERS_URL = "http://localhost:3001/users/1"
 
   const useStyles = makeStyles((theme) => ({
@@ -43,6 +43,7 @@
     },
     withBorder: {
       textAlign: "center",
+      borderStyle: 'solid',
       color: "#000",
       border: "solid 4px #838383",
       padding: "12px 12px 12px 12px",
@@ -61,7 +62,7 @@
     const [prompts, setPrompts]=useState([])
     const [randomPrompt, setRandomPrompt]=useState("")
     const [randomPromptID, setRandomPromptID]=useState("")
-    const [moods, setMoods]=useState([])
+    // const [moods, setMoods]=useState([])
     const [rating, setRating]=useState(0)
     const [selected, setSelected] = useState(0)
     const [content, setContent]=useState("")
@@ -82,17 +83,6 @@
         alert(err.message);
       }
     };
-    
-    const getMoods = async () => {
-      try {
-        const userMoods = await
-        axios.get(MOODS_URL)
-        // console.log(userMoods.data)
-        setMoods(userMoods.data);
-      } catch(err){
-        alert(err.message)
-      }
-    }
 
     const getUsers = async () => {
       try { 
@@ -107,7 +97,7 @@
 
     useEffect(() => {
       getPrompts()
-      getMoods()
+      // getMoods()
       getUsers()
     }, [])
 
@@ -165,18 +155,17 @@
     return (
       <div>
           <br /> <br />
-          
           <div className={classes.paper}>
           <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}>
-          <label><Typography variant="h3"> How are you feeling right now?</Typography></label>
+          <label><Typography variant="h3"><b> How are you feeling right now?</b></Typography></label>
           <br /> 
-          {/* style={{width: "10%", height: "20%", position: 'absolute'}} */}
+          <center>
           <input 
             value={5} 
             type="image" 
             src={Bear1} 
             onClick={handleClick}
-            className={selected == 5 ? classes.withBorder : classes.noBorder}
+            className={selected === 5 ? classes.withBorder : classes.noBorder}
             className={classes.image}
             />
           <input 
@@ -184,7 +173,7 @@
               type="image" 
               src={Bear2} 
               onClick={handleClick} 
-              className={selected == 4 ? classes.withBorder : classes.noBorder}
+              className={selected === 4 ? classes.withBorder : classes.noBorder}
               className={classes.image}
             />
           <input 
@@ -192,7 +181,7 @@
             type="image" 
             src={Bear3} 
             onClick={handleClick} 
-            className={selected == 3 ? classes.withBorder : classes.noBorder}
+            className={selected === 3 ? classes.withBorder : classes.noBorder}
             className={classes.image}
           />
           <input 
@@ -200,7 +189,7 @@
             type="image" 
             src={Bear4} 
             onClick={handleClick} 
-            className={selected == 2 ? classes.withBorder : classes.noBorder}
+            className={selected === 2 ? classes.withBorder : classes.noBorder}
             className={classes.image}
           />
           <input 
@@ -208,16 +197,14 @@
             type="image" 
             src={Bear5} 
             onClick={handleClick} 
-            className={selected == 1 ? classes.withBorder : classes.noBorder}
+            className={selected === 1 ? classes.withBorder : classes.noBorder}
             className={classes.image}
           />
-          
-          <br /> 
-          <br />
+          </center>
+          <br /><br /> 
           <center>
           <label><h1>{randomPrompt}</h1></label> 
           <br />
-          {/* <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}> */}
         <div>
 
           <TextField
@@ -229,21 +216,9 @@
             variant="outlined"
           />
         </div>
-        {/* <label><h2>What emotions are you feeling?</h2></label>
-        <Grid container item xs={12}>
-        {moods.map(mood =>
-          <Grid item xs={2}>
-            <FormControlLabel
-            key={mood.id}
-            control={<Checkbox value={mood.name} color="secondary"/>}
-            label={mood.name}
-            />
-          </Grid>)}
-          </Grid> */}
           <Button type="submit" variant="contained" color="primary">
             Submit
           </Button>
-      {/* </form> */}
           </center>
             </form>
           </div>
