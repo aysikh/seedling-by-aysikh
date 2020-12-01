@@ -10,8 +10,8 @@ import Button from '@material-ui/core/Button'
 import Popper from '@material-ui/core/Popper';
 import Grid from '@material-ui/core/Grid';
 import Fade from '@material-ui/core/Fade';
-import JournalForm from '../components/JournalForm'
-import JournalShow from '../components/JournalShow'
+import BlogPostForm from '../components/BlogPostForm'
+import BlogPostShow from '../components/BlogPostShow'
 
 const JournalContainer = () => {
 
@@ -20,12 +20,12 @@ const JournalContainer = () => {
             <div>
                 <Grid container spacing={24} style={{padding: '10px', marginLeft: '5rem'}}>
                     <Grid item xs={8} >
-                        <JournalShow />
+                        <BlogPostShow />
                     </Grid>
 
                 
                     <Grid item xs={2} >
-                        <JournalForm />
+                        <BlogPostForm />
                     </Grid>
                 </Grid>
             </div>

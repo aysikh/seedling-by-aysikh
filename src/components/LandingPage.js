@@ -8,12 +8,7 @@ import SortIcon from '@material-ui/icons/Sort';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Logo from '../assets/logo3.png'
 import Navbar2 from './Navbar2'
-import LogInContainer from '../containers/LogInContainer'
-import NewUserForm from './NewUserForm'
-import HomepageContainer from '../containers/HomepageContainer'
-import CalendarContainer from '../containers/CalendarContainer'
-import JournalForm from './JournalForm'
-import Main from './Main'
+
 import DailyEntryForm from './DailyEntryForm'
 // import BG from '../assets/bg.jpg'
 import LogContainer from '../containers/LogContainer'

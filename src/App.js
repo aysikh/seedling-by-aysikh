@@ -10,11 +10,11 @@ import Navbar2 from './components/Navbar2'
 import DailyEntryForm from './components/DailyEntryForm'
 import LandingPage from './components/LandingPage'
 import BG from './assets/bg.jpg'
-import JournalContainer from './containers/JournalContainer'
+import BlogPostContainer from './containers/BlogPostContainer'
 import Main from './components/Main'
 import HomepageContainer from './containers/HomepageContainer'
 import CalendarContainer from './containers/CalendarContainer'
-import JournalForm from './components/JournalForm'
+import BlogPostForm from './components/BlogPostForm'
 // import Calendar from './components/Calendar'
 // import LogInContainer from './containers/LogInContainer'
 // import NewUserForm from './components/NewUserForm'
@@ -109,7 +109,7 @@ export default function App() {
             <Route path="/home" component={HomepageContainer} />
             <Route exact path="/user" component={MainContainer} />
             <Route path="/calendar" component={CalendarContainer} />
-            <Route path="/journal" component={JournalContainer} />
+            <Route path="/blogpost" component={BlogPostContainer} />
             <Route path="/stats" component={Main} />
             <Route path="/newuser" component={NewUserContainer} />
             <Route path="/dailyentry" component={DailyEntryForm} />

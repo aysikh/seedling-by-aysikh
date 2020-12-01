@@ -99,10 +99,10 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemText primary={"Add Daily Entry"} />
             </ListItem>
           </Link>}
-          {<Link to="/journal" className={classes.link}>
-            <ListItem button key={"Journal Entries"} className={classes.text}>
+          {<Link to="/blogpost" className={classes.link}>
+            <ListItem button key={"Blog Posts"} className={classes.text}>
             {/* <ListItemIcon className={classes.icon}> <MenuBookIcon /> </ListItemIcon> */}
-            <ListItemText primary={"Journal Entries"} />
+            <ListItemText primary={"Blog Posts"} />
             </ListItem>
             </Link>}
           {<Link to="/calendar" className={classes.link}>

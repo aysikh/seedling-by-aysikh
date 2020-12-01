@@ -50,7 +50,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: '3px',
+    fontSize: '1.3rem',
+    fontColor: 'white'
   },
 }));
 
@@ -154,7 +156,7 @@ export default function LogInForm({checked}, props) {
                 <center>
                   <Button 
                     fullWidth 
-                    color='primary' 
+                    color='secondary' 
                     variant='contained' 
                     type='submit' 
                     className={classes.submit}
