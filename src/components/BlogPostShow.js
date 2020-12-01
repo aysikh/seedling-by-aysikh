@@ -85,8 +85,13 @@ const BLOGPOSTS_URL = "http://localhost:3001/blog_posts"
       setView(!view)
     }
 
-    const handleDelete = () => {
-      console.log('deleted')
+    const handleDelete = (post) => {
+      // console.log(post)
+      fetch(`http://localhost:3001/blog_posts/${post.id}`, {
+        method: 'DELETE',
+      })
+      .then(rsp => rsp.json())
+      .then(window.location.reload())
     }
 
 
@@ -99,7 +104,7 @@ const BLOGPOSTS_URL = "http://localhost:3001/blog_posts"
           return(
             <Accordion square expanded={expanded === "panel" + id} onChange={handleChange("panel" + id)}>
               <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                <Typography>{title}</Typography>
+                <Typography style={{fontSize: '1.5rem', fontFamily: 'IBM Plex Sans'}}>{title}</Typography>
 
                 <Button style={{marginLeft: 'auto'}}>
                       <EditOutlinedIcon onClick={(event) => handleEdit(event, post)} />
