@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { Collapse } from '@material-ui/core';
 import ArrowForwardOutlinedIcon from '@material-ui/icons/ArrowForwardOutlined';
 import axios from 'axios'
+import WebInfo from '../assets/webinfogreen.png'
 
 
 function Copyright() {
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   grid: {
     height: '50vh',
   },
-  paper: {
+  paperContent: {
     margin: theme.spacing(4, 6),
     display: 'flex',
     flexDirection: 'column',
@@ -114,10 +115,13 @@ export default function LogInForm({checked}, props) {
 
     return (
       <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
-      <Grid container component="main" className={classes.grid} >
+      <Grid container spacing={24} component="main" className={classes.grid} >
           <CssBaseline />
-          <Grid item xs={12} sm={10} md={8} component={Paper} elevation={6} square>
-          <div className={classes.paper}>
+          <Grid item xs={4} >
+            <img src={WebInfo} style={{height: '35rem', marginRight: '82rem'}}/>
+          </Grid>
+          <Grid item xs={3} component={Paper} elevation={6} style={{marginLeft: '10rem'}}>
+          <div className={classes.paperContent}>
               <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
               </Avatar>

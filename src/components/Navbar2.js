@@ -119,7 +119,7 @@ export default function SwipeableTemporaryDrawer() {
           </Link>}
         </List>
         <Divider />
-        {<NavLink to="/" className={classes.link}>
+        {<NavLink to="/logout" className={classes.link}>
           <ListItem button key={"Sign Out"} className={classes.text}>
             <ListItemIcon> <ExitToAppIcon /> </ListItemIcon>
             <ListItemText primary={"Sign Out"} />

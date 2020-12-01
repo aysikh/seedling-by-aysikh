@@ -15,6 +15,8 @@ import Main from './components/Main'
 import HomepageContainer from './containers/HomepageContainer'
 import CalendarContainer from './containers/CalendarContainer'
 import BlogPostForm from './components/BlogPostForm'
+import LogOutContainer from './containers/LogOutContainer';
+
 // import Calendar from './components/Calendar'
 // import LogInContainer from './containers/LogInContainer'
 // import NewUserForm from './components/NewUserForm'
@@ -83,28 +85,6 @@ export default function App() {
           {/* </Toolbar> */}
         <Switch>
           <div>
-            {/* <Route 
-              exact path='/' 
-              render={props => (
-              <Home {...props} handleLogout={handleLogout} loggedInStatus={isLoggedIn}/>
-              )}
-            />
-            <Route 
-              exact path='/login' 
-              render={props => (
-              <Login {...props} 
-              handleLogin={handleLogin} 
-              loggedInStatus={isLoggedIn}/>
-              )}
-            />
-            <Route 
-              exact path='/signup' 
-              render={props => (
-              <NewUserForm {...props} 
-              handleLogin={handleLogin} 
-              loggedInStatus={isLoggedIn}/>
-              )}
-            /> */}
             <Route exact path="/" component={LandingPage} />
             <Route path="/home" component={HomepageContainer} />
             <Route exact path="/user" component={MainContainer} />
@@ -113,6 +93,7 @@ export default function App() {
             <Route path="/stats" component={Main} />
             <Route path="/newuser" component={NewUserContainer} />
             <Route path="/dailyentry" component={DailyEntryForm} />
+            <Route path="/logout" component={LogOutContainer} />
             {/* <Route component={NoMatchPage} /> */}
           </div>
         </Switch>

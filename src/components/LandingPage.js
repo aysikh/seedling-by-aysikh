@@ -105,8 +105,8 @@ import LogContainer from '../containers/LogContainer'
                 >
                 <div className={classes.container}>
                 <h1 className={classes.title}>
-                    watch yourself  <br />
-                    <span className={classes.colorText}>grow</span>
+                    track your  <br />
+                    <span className={classes.colorText}>growth</span>
                 </h1>
                 <h3>start watering yourself. </h3>
                 <Scroll to="log-in-form" smooth={true}>
