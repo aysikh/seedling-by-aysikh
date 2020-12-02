@@ -23,12 +23,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(4, 6, 2),
   },
   root: {
     '& .MuiTextField-root': {
@@ -42,18 +43,19 @@ const useStyles = makeStyles((theme) => ({
     border: "solid 4px transparent",
     padding: "12px 12px 12px 12px",
     margin: "0px 0px 10px 0",
+    height: "13.5rem",
+    margin: "8px"
   },
   withBorder: {
     textAlign: "center",
     color: "#000",
-    border: "solid 4px #838383",
+    border: "solid 4px transparent",
     padding: "12px 12px 12px 12px",
     margin: "0px 0px 10px 0",
-  },
-  image: {
-    height: "13.5rem",
+    height: "14.5rem",
     margin: "8px"
-  }
+  },
+
 }));
 
 
@@ -163,8 +165,8 @@ export default function EditDailyEntryForm(props) {
           src={Bear1} 
           onClick={handleClick}
           onChange={editRating}
-          className={selected == 5 ? classes.withBorder : classes.noBorder}
-          className={classes.image}
+          className={selected === "5" ? classes.withBorder : classes.noBorder}
+          // className={classes.image}
           />
         <input 
             value={4} 
@@ -172,8 +174,8 @@ export default function EditDailyEntryForm(props) {
             src={Bear2} 
             onClick={handleClick} 
             onChange={editRating}
-            className={selected == 4 ? classes.withBorder : classes.noBorder}
-            className={classes.image}
+            className={selected === "4" ? classes.withBorder : classes.noBorder}
+            // className={classes.image}
           />
         <input 
           value={3} 
@@ -181,8 +183,8 @@ export default function EditDailyEntryForm(props) {
           src={Bear3} 
           onClick={handleClick} 
           onChange={editRating}
-          className={selected == 3 ? classes.withBorder : classes.noBorder}
-          className={classes.image}
+          className={selected === "3" ? classes.withBorder : classes.noBorder}
+          // className={classes.image}
         />
         <input 
           value={2} 
@@ -190,8 +192,8 @@ export default function EditDailyEntryForm(props) {
           src={Bear4} 
           onClick={handleClick} 
           onChange={editRating}
-          className={selected == 2 ? classes.withBorder : classes.noBorder}
-          className={classes.image}
+          className={selected === "2" ? classes.withBorder : classes.noBorder}
+          // className={classes.image}
         />
         <input 
           value={1} 
@@ -199,15 +201,15 @@ export default function EditDailyEntryForm(props) {
           src={Bear5} 
           onClick={handleClick} 
           onChange={editRating}
-          className={selected == 1 ? classes.withBorder : classes.noBorder}
-          className={classes.image}
+          className={selected === "1" ? classes.withBorder : classes.noBorder}
+          // className={classes.image}
         />
         
         <br /> 
         <br />
         <center>
-        <label>Prompt: </label> 
-        
+        <label>Prompt Here </label> 
+        <br /> 
         <br />
         {/* <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}> */}
       <div>

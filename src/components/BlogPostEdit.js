@@ -24,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       display: "absolute",
-      left: "20%",
+      // left: "20%",
       height: "80vh",
-      width: "120vh"
+      width: "140vh"
     },
     submit: {
       // marginLeft: '20rem',
@@ -51,6 +51,12 @@ const useStyles = makeStyles((theme) => ({
     },
     icon: {
       fontSize: "5.5rem"
+    },
+    modal: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '2.5rem',
     }
   }))
 
@@ -202,15 +208,6 @@ export default function BlogPostForm(props) {
     
         <div>
         <br />
-        {/* <Grid 
-            item container xs={10} 
-            alignItems="flex-end" 
-            direction="column" 
-            style={{position: "absolute", maxWidth: '15%'}}>
-            <Grid item>
-            <Button onClick={handleClick('right-start')}><AddCircleIcon className={classes.icon}/></Button>
-            </Grid>
-        </Grid> */}
         </div>
   </div>
   );

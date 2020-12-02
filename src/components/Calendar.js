@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as dateFns from "date-fns";
 import "./Calendar.css";
 import Seed from '../assets/seed.png'
-import isSameDay from 'date-fns/isSameDay'
+import Heart from '../assets/heart.png'
 
 const Calendar = (props) => {
     // console.log(props.selectedDate)
@@ -78,7 +78,7 @@ const Calendar = (props) => {
                     >
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
-                        {/* <img src={Seed} style={{height: '4.5rem', marginLeft: '1rem', marginTop: '.3rem'}}/> */}
+                        <img src={Heart} style={{height: '4.5rem', marginLeft: '1rem', marginTop: '.3rem'}}/>
                     </div>
                 );
                 day = dateFns.addDays(day, 1);

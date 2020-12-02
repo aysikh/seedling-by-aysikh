@@ -159,10 +159,13 @@ export default function NewUserForm(props) {
     }
     fetch("http://localhost:3001/users", requestPackage)
     .then(rsp => rsp.json())
-    .then(history.push("/home"))
+    .then(console.log)
+    // history.push("/home")
   }
 
+
   return (
+    
     <Container component="main" maxWidth="xs">
       <Grid container component="main" >
       <CssBaseline />
@@ -188,7 +191,6 @@ export default function NewUserForm(props) {
                 type="name"
                 id="name"
                 label="Name: "
-                autoFocus
               />
             </Grid>
             <Grid item xs={12}>

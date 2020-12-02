@@ -105,21 +105,7 @@ export default function LogInForm({checked}, props) {
       
     };
         
-    // axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
-    //     .then(response => {
-    //       if (response.data.logged_in) {
-    //         props.handleLogin(response.data)
-    //         redirect()
-    //       } else {
-    //         setErrors({errors: response.data.errors})
-    //       }
-    //     })
-    //     .catch(error => console.log('api errors:', error))
-    //   };
 
-    // const redirect = () => {
-    //     props.history.push('/')
-    //   }
 
     const handleErrors = () => {
         return (

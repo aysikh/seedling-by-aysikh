@@ -20,9 +20,17 @@ const useStyles = makeStyles((theme) => ({
 const CalendarContainer = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  // the date before being parsed
   const [currentDate, setCurrentDate] = useState(new Date());
+
+  //the date being selected in (mm-dd-yyyy) format
   const [selectedDate, setSelectedDate] = useState(null);
+
+  // the array of dailyentries
   const [dailyentries, setDailyEntries] = useState(null);
+
+  // the id of the selected dailyentry if exists on that day
   const [currentID, setCurrentID] = useState({});
 
   // let newCurrentDate = currentDate.toISOString().substring(0, 10)

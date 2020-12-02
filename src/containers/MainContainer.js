@@ -11,7 +11,6 @@ import DailyEntryForm from '../components/DailyEntryForm'
 import CalendarContainer from './CalendarContainer'
 import NoMatchPage from '../components/NoMatchPage'
 import LandingPage from '../components/LandingPage'
-import LogContainer from './LogContainer'
 import { CssBaseline } from '@material-ui/core';
 import BG from '../assets/bg.jpg'
 

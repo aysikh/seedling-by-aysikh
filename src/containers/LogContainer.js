@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LogInForm from '../components/LogInForm'
 import useWindowPosition from '../hook/useWindowPosition';
+import NewUserForm from '../components/NewUserForm'
 
 const useStyles = makeStyles((theme) => ({
     root: {

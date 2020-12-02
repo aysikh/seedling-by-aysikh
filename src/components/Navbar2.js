@@ -18,6 +18,7 @@ import Image from '../assets/navbar2.gif'
 const useStyles = makeStyles((theme) => ({
   list: {
     width: 250,
+    // overflowY: 'hidden',
   },
   fullList: {
     width: 'auto',
@@ -47,8 +48,6 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: "black",
-    fontSize: '8rem',
-    fontWeight: '550',
     lineHeight: '3',
     letterSpacing: '0.47em',
     textDecoration: 'none',
@@ -90,31 +89,31 @@ export default function SwipeableTemporaryDrawer() {
           {<Link to="/home" className={classes.link}>
             <ListItem button key={"Homepage"} className={classes.text}>
             {/* <ListItemIcon className={classes.icon} > <HomeIcon /> </ListItemIcon> */}
-            <ListItemText primary={"Homepage"} />
+            <ListItemText primary={"Homepage"} style={{height: '2.5rem'}} />
             </ListItem>
           </Link>}
           {<Link to="/dailyentry" className={classes.link}>
             <ListItem button key={"Add Daily Entry"} className={classes.text}>
             {/* <ListItemIcon className={classes.icon}> <InsertEmoticonIcon /> </ListItemIcon> */}
-            <ListItemText primary={"Add Daily Entry"} />
+            <ListItemText primary={"Add Daily Entry"} style={{height: '2.5rem'}}/>
             </ListItem>
           </Link>}
           {<Link to="/blogpost" className={classes.link}>
             <ListItem button key={"Blog Posts"} className={classes.text}>
             {/* <ListItemIcon className={classes.icon}> <MenuBookIcon /> </ListItemIcon> */}
-            <ListItemText primary={"Blog Posts"} />
+            <ListItemText primary={"Blog Posts"} style={{height: '2.5rem'}}/>
             </ListItem>
             </Link>}
           {<Link to="/calendar" className={classes.link}>
             <ListItem button key={"Calendar"} className={classes.text}>
             {/* <ListItemIcon className={classes.icon}> <CalendarTodayIcon /> </ListItemIcon> */}
-            <ListItemText primary={"Calendar"} />
+            <ListItemText primary={"Calendar"} style={{height: '2.5rem'}}/>
             </ListItem>
           </Link>}
           {<Link to="/stats" className={classes.link}>
             <ListItem button key={"Stats"} className={classes.text}>
             {/* <ListItemIcon className={classes.icon}> <EqualizerIcon /> </ListItemIcon> */}
-            <ListItemText primary={"Stats"} />
+            <ListItemText primary={"Stats"} style={{height: '2.5rem'}}/>
             </ListItem>
           </Link>}
         </List>
@@ -122,12 +121,12 @@ export default function SwipeableTemporaryDrawer() {
         {<NavLink to="/logout" className={classes.link}>
           <ListItem button key={"Sign Out"} className={classes.text}>
             <ListItemIcon> <ExitToAppIcon /> </ListItemIcon>
-            <ListItemText primary={"Sign Out"} />
+            <ListItemText primary={"Sign Out"} style={{height: '2.5rem'}}/>
           </ListItem>
         </NavLink>}
         <div>
           <center>
-            <img src={Image} style={{height: '15.5rem', position: 'relative', marginBottom: '-725px', paddingBottom: '-250px'}}/>
+            <img src={Image} style={{height: '15.5rem', position: 'relative', marginBottom: '-40rem', paddingBottom: '-250px'}}/>
           </center>
         </div>
     </div>

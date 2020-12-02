@@ -40,17 +40,17 @@
       border: "solid 4px transparent",
       padding: "12px 12px 12px 12px",
       margin: "0px 0px 10px 0",
-      height: "13.5rem",
+      height: "14.5rem",
       margin: "8px"
     },
     withBorder: {
       textAlign: "center",
       borderStyle: 'solid',
       color: "#000",
-      border: "solid 4px #838383",
+      border: "solid 4px transparent",
       padding: "12px 12px 12px 12px",
       margin: "0px 0px 10px 0",
-      height: "13.5rem",
+      height: "17.5rem",
       margin: "8px"
     },
     image: {

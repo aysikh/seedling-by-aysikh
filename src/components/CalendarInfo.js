@@ -104,22 +104,22 @@ const CalendarInfo = (props) => {
         // console.log(dateentry[0].date)
         // console.log(randomPrompt)
         for (let i = 0; i < prompts.length; i++){
-            // if (prompts[i].id === dateentry[0].prompt) {
-            //     return prompts[i].statement
-            // }
-            // else if (props.selectedDate !== dateentry[0].date){
-            //     return randomPrompt
-            // }
+            if (prompts[i].id === dateentry[0].prompt) {
+                return prompts[i].statement
+            }
+            else if (props.selectedDate !== dateentry[0].date){
+                return null
+            }
             // check for all of the days in the calendar and then find whether 
             // or not those day have a daily entry
 
-            if(props.selectedDate !== dateentry) {
-                // debugger
-                return randomPrompt
-            }
-            else if( prompts[i].id === dateentry[0].prompt){
-                return prompts[i].statement
-            }
+            // if(props.selectedDate !== dateentry) {
+            //     // debugger
+            //     return randomPrompt
+            // }
+            // else if( prompts[i].id === dateentry[0].prompt){
+            //     return prompts[i].statement
+            // }
             // if props.selected does not have a dateentry, then return prompt
             // else if dailyentry does not have a prompt then generate a random prompt
         }
