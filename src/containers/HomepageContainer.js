@@ -75,7 +75,7 @@ export default function HomepageContainer() {
           <br />
             <Grid container justify="center" spacing={spacing} >
               <div> 
-                <h1> Welcome to your homepage </h1> 
+                <h1> Good Morning </h1> 
               </div>
             </Grid>
 

@@ -61,10 +61,16 @@ start = start.setDate(start.getDate() - 7); // set to 'now' minus 7 days.
           labels: ['11/30', '11/31', '12/01', '12/02', '12/03', '12/05'], 
           datasets: [
             {
-              label: 'mood', 
+              label: 'your mood rating', 
               data: [3, 5, 4, 1, 2, 1, 5],
-              lineTension: 0
-            }
+              lineTension: 0,
+              borderColor : "#90caf9",
+              borderWidth : "3",
+              hoverBorderColor : "#000",
+              backgroundColor: [
+                '#bbdefb'
+              ]
+            },
           ],
 
         }

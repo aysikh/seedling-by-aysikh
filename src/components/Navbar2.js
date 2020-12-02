@@ -110,12 +110,6 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemText primary={"Calendar"} style={{height: '2.5rem'}}/>
             </ListItem>
           </Link>}
-          {<Link to="/stats" className={classes.link}>
-            <ListItem button key={"Stats"} className={classes.text}>
-            {/* <ListItemIcon className={classes.icon}> <EqualizerIcon /> </ListItemIcon> */}
-            <ListItemText primary={"Stats"} style={{height: '2.5rem'}}/>
-            </ListItem>
-          </Link>}
         </List>
         <Divider />
         {<NavLink to="/logout" className={classes.link}>
@@ -126,7 +120,7 @@ export default function SwipeableTemporaryDrawer() {
         </NavLink>}
         <div>
           <center>
-            <img src={Image} style={{height: '15.5rem', position: 'relative', marginBottom: '-40rem', paddingBottom: '-250px'}}/>
+            <img src={Image} style={{height: '15.5rem', position: 'relative', marginBottom: '-43rem', paddingBottom: '-250px'}}/>
           </center>
         </div>
     </div>
