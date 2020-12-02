@@ -40,6 +40,8 @@
       border: "solid 4px transparent",
       padding: "12px 12px 12px 12px",
       margin: "0px 0px 10px 0",
+      height: "13.5rem",
+      margin: "8px"
     },
     withBorder: {
       textAlign: "center",
@@ -48,10 +50,10 @@
       border: "solid 4px #838383",
       padding: "12px 12px 12px 12px",
       margin: "0px 0px 10px 0",
-    },
-    image: {
       height: "13.5rem",
       margin: "8px"
+    },
+    image: {
     }
   }));
 
@@ -65,6 +67,8 @@
     // const [moods, setMoods]=useState([])
     const [rating, setRating]=useState(0)
     const [selected, setSelected] = useState(0)
+    const [notBear, setNotBear] = useState(0)
+
     const [content, setContent]=useState("")
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
@@ -123,6 +127,7 @@
 
     const handleClick = (event) => {
       event.preventDefault()
+      console.log(event.target.value)
       setRating(event.target.value)
       setSelected(event.target.value)
     }
@@ -165,41 +170,41 @@
             value={5} 
             type="image" 
             src={Bear1} 
-            onClick={handleClick}
-            className={selected === 5 ? classes.withBorder : classes.noBorder}
-            className={classes.image}
+            onClick={(event) => handleClick (event)}
+            className={selected === "5" ? classes.withBorder : classes.noBorder}
+            // className={classes.image}
             />
           <input 
               value={4} 
               type="image" 
               src={Bear2} 
               onClick={handleClick} 
-              className={selected === 4 ? classes.withBorder : classes.noBorder}
-              className={classes.image}
+              className={selected === "4" ? classes.withBorder : classes.noBorder}
+              // className={classes.image}
             />
           <input 
             value={3} 
             type="image" 
             src={Bear3} 
             onClick={handleClick} 
-            className={selected === 3 ? classes.withBorder : classes.noBorder}
-            className={classes.image}
+            className={selected === "3" ? classes.withBorder : classes.noBorder}
+            // className={classes.image}
           />
           <input 
             value={2} 
             type="image" 
             src={Bear4} 
             onClick={handleClick} 
-            className={selected === 2 ? classes.withBorder : classes.noBorder}
-            className={classes.image}
+            className={selected === "2" ? classes.withBorder : classes.noBorder}
+            // className={classes.image}
           />
           <input 
             value={1} 
             type="image" 
             src={Bear5} 
             onClick={handleClick} 
-            className={selected === 1 ? classes.withBorder : classes.noBorder}
-            className={classes.image}
+            className={selected === "1" ? classes.withBorder : classes.noBorder}
+            // className={classes.image}
           />
           </center>
           <br /><br /> 

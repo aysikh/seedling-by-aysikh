@@ -1,62 +1,67 @@
 import React from 'react';
-import { useTheme } from '@material-ui/core/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
+import { Bar, Line} from 'react-chartjs-2'
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Bear1 from '../assets/bear5.png'
 
-// Generate Sales Data
-const createData = (date, rating) => {
-  return { date, rating };
-}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '40rem',
+    width: '65rem',
+    marginLeft: '10rem'
+  },
+}))
 
-const data = [
-  createData('11/01', 1),
-  createData('11/02', 4),
-  createData('11/03', 3),
-  createData('11/05', 2),
-  createData('11/06', 1),
-  createData('11/07', 2),
-  createData('11/08', 2),
-  createData('11/09', 1),
-  createData('11/11', 2),
-  createData('11/12', 5)
-];
 
 const Stats = () => {
-  const theme = useTheme();
+  const classes = useStyles()
 
-  return (
-    <React.Fragment>
-      <ResponsiveContainer>
-        <LineChart
-          data={data}
-          margin={{
-            top: 16,
-            right: 16,
-            bottom: 0,
-            left: 24,
-          }}
-        >
-          <XAxis dataKey="date" stroke={theme.palette.text.secondary} />
-          <Label
-            angle ={200}
-            position="middle"
-            style={{ textAnchor: 'middle', fill: theme.palette.text.primary}}
-            >
-              DATE
-            </Label>
-          <YAxis stroke={theme.palette.text.secondary}>
-            <Label
-              angle={270}
-              position="left"
-              style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
-            >
-              MOOD
-            </Label>
-          </YAxis>
-          <Line type="monotone" dataKey="rating" stroke={theme.palette.primary.main} dot={false} />
-        </LineChart>
-      </ResponsiveContainer>
-    </React.Fragment>
-  );
+  return(
+
+    <div>
+      <Paper className={classes.root}>
+        <Line 
+        data = {{
+          labels: ['11/30', '11/31', '12/01', '12/02', '12/03', '12/05'], 
+          datasets: [
+            {
+              label: 'mood', 
+              data: [3, 5, 4, 1, 2,1],
+              lineTension: 0
+            }
+          ],
+        }}
+        style={{overflow: 'hidden'}}
+        maxheight = {400}
+        maxwidth = {600}
+        options = {{
+          maintainAspectRatio: false,
+          bezierCurve: false,
+          layout: {
+            padding: {
+              bottom: 30,
+              left: 90,
+              right: 90,
+              top: 10
+            },
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  steps: 5,
+                  stepSize: 1,
+                  // labels: [('../assets/bear5.png')]
+                },
+              },
+            ],
+          },
+        }}
+        /> 
+      </Paper>
+    </div>
+  )
 }
 
 export default Stats

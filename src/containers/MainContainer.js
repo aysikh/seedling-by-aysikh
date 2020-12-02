@@ -7,7 +7,6 @@ import NewUserForm from '../components/NewUserForm'
 import Container from '@material-ui/core/Container'
 import Navbar2 from '../components/Navbar2'
 import HomepageContainer from './HomepageContainer'
-import Main from '../components/Main'
 import DailyEntryForm from '../components/DailyEntryForm'
 import CalendarContainer from './CalendarContainer'
 import NoMatchPage from '../components/NoMatchPage'
@@ -31,22 +30,8 @@ export default function MainContainer(props) {
   const classes = useStyles();
 
   return (
-    // <BrowserRouter>
     <div className={classes.root}>
-      {/* <Container maxWidth="lg"> */}
       <CssBaseline />
-      {/* <Switch> */}
-        {/* <Route exact path="/" component={MainContainer} /> */}
-        {/* <Route path="/logout" component={LogInContainer} />
-        <Route exact path="/newuser" component={NewUserForm} />
-        <Route exact path ="/user/home" component={HomepageContainer} />
-        <Route exact path="/user/calendar" component={CalendarContainer} />
-        <Route exact path="/user/journal" component={JournalForm} />
-        <Route exact path="/user/stats" component={Main} />
-        <Route exact path ="/user/dailyentry" component={DailyEntryForm} />
-      </Switch> */}
-      {/* </Container> */}
     </div>
-    // </BrowserRouter>
   )
 }

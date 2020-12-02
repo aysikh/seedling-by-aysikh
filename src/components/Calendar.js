@@ -62,6 +62,7 @@ const Calendar = (props) => {
                         key={day}
                         onClick={(event) => onDateClick(dateFns.format(cloneDay, 'MM-dd-yyyy'), props.handleClick(event))}
                     >
+                        <label>hello</label>
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
                     </div>
