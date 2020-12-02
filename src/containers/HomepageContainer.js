@@ -67,6 +67,19 @@ export default function HomepageContainer() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
+  const currentTime = () => {
+    let date = new Date();
+    let hours = date.getHours();
+
+    if (hours < 12) {
+      return "Good morning!"
+    } else if (hours < 18) {
+      return "Good afternoon!"
+    } else {
+      return "Good evening!" 
+    }
+      
+  }
 
   return (
     <div>
@@ -75,8 +88,9 @@ export default function HomepageContainer() {
           <br />
             <Grid container justify="center" spacing={spacing} >
               <div> 
-                <h1> Good Morning </h1> 
+                {currentTime()}
               </div>
+              <br/> <br/>
             </Grid>
 
             <Grid container spacing={24} style={{padding: '10px'}}>
