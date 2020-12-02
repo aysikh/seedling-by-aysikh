@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -58,32 +59,51 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function LogInForm({checked}, props) {
-  const classes = useStyles();
+    const classes = useStyles();
+    const history = useHistory();
+    const [email, setEmail]=useState("")
+    const [password, setPassword]=useState("")
+    const [errors, setErrors]=useState("")
 
-  const [email, setEmail]=useState("")
-  const [password, setPassword]=useState("")
-  const [errors, setErrors]=useState("")
+    // useEffect(()=> {
+    //   return props.loggedInStatus ? redirect() : null
+    // }, [])
 
-  // useEffect(()=> {
-  //   return props.loggedInStatus ? redirect() : null
-  // }, [])
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value)
+    };
 
-  const handleEmailChange = (event) => {
-      setEmail(event.target.value)
-  };
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value)
+    };
 
-  const handlePasswordChange = (event) => {
-      setPassword(event.target.value)
-  };
+    const handleSubmit = (event) => {
+      event.preventDefault()
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    // const {email, password} = this.state
-    let user = {
-          email: email,
-          password: password
-        }
-      }
+      let user = {
+            email: email,
+            password: password
+          }
+        
+      fetch('http://localhost:3001/login', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+      })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data)
+          if (data.errors) {
+            alert("Invalid Credentials")
+          }
+          else {
+            // props.setCurrentUser(data.info)
+            console.log(data.info)
+            history.push('/home')
+          }
+        })
+      
+    };
         
     // axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
     //     .then(response => {
@@ -113,6 +133,7 @@ export default function LogInForm({checked}, props) {
         )
       }
 
+      
     return (
       <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
       <Grid container spacing={24} component="main" className={classes.grid} >

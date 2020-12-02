@@ -1,30 +1,44 @@
 import React, { useState } from "react";
 import * as dateFns from "date-fns";
 import "./Calendar.css";
+import Seed from '../assets/seed.png'
+import isSameDay from 'date-fns/isSameDay'
 
 const Calendar = (props) => {
     // console.log(props.selectedDate)
 
+    // const completedEntry = () => {
+    //     let dailyentry = props.parsedDateEntry()
+    //     console.log(dailyentry[0].date)
+    //     dailyentry = dailyentry.filter(entry => entry.date === props.selectedDate)[0]
+    
+    //     return dailyentry
+    // }
+
     const header = () => {
         const dateFormat = "MMMM yyyy";
+
         return (
-            <center>
-                <div className="header row flex-middle">
-                    <div className="column col-start">
-                        <div className="icon" onClick={prevMonth}>
-                            chevron_left
+            <div>
+                {/* {completedEntry()} */}
+                <center>
+                    <div className="header row flex-middle">
+                        <div className="column col-start">
+                            <div className="icon" onClick={prevMonth}>
+                                chevron_left
+                            </div>
+                        </div>
+                        <div className="column col-center">
+                            <span>{dateFns.format(props.currentDate, dateFormat)}</span>
+                        </div>
+                        <div className="column col-end">
+                            <div className="icon" onClick={nextMonth}>
+                                chevron_right
+                            </div>
                         </div>
                     </div>
-                    <div className="column col-center">
-                        <span>{dateFns.format(props.currentDate, dateFormat)}</span>
-                    </div>
-                    <div className="column col-end">
-                        <div className="icon" onClick={nextMonth}>
-                            chevron_right
-                        </div>
-                    </div>
-                </div>
-            </center>
+                </center>
+            </div>
         );
     };
     const days = () => {
@@ -62,9 +76,9 @@ const Calendar = (props) => {
                         key={day}
                         onClick={(event) => onDateClick(dateFns.format(cloneDay, 'MM-dd-yyyy'), props.handleClick(event))}
                     >
-                        <label>hello</label>
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
+                        {/* <img src={Seed} style={{height: '4.5rem', marginLeft: '1rem', marginTop: '.3rem'}}/> */}
                     </div>
                 );
                 day = dateFns.addDays(day, 1);

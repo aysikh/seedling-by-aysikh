@@ -25,6 +25,10 @@ const CalendarContainer = () => {
   const [dailyentries, setDailyEntries] = useState(null);
   const [currentID, setCurrentID] = useState({});
 
+  // let newCurrentDate = currentDate.toISOString().substring(0, 10)
+  // console.log(newCurrentDate)
+  // console.log(selectedDate)
+  
   const getDailyEntries = async () => {
     try {
       const userDailyEntries = await
@@ -81,6 +85,13 @@ const CalendarContainer = () => {
       return dates
 }
 
+
+// if there the dailyentry date matches with a day on the calendar,
+// it should return an image
+// I know dailyentry's date = 
+// I need to map through the array of parsedDateentries and match it up with the dates on the calendar
+
+
   return (
     <div>
       <br />
@@ -93,6 +104,7 @@ const CalendarContainer = () => {
             dailyentries={dailyentries}
             setDailyEntries={setDailyEntries}
             handleClick={handleClick}
+            parsedDateEntry={parsedDateEntry}
             /> 
         </div>
           <Popover
