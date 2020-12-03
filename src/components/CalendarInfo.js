@@ -103,6 +103,9 @@ const CalendarInfo = (props) => {
         let dateentry = dailyentry.filter(entry => entry.date === props.selectedDate)
         // console.log(dateentry[0].date)
         // console.log(randomPrompt)
+        if(dateentry.length == 0){
+            return null
+        }
         for (let i = 0; i < prompts.length; i++){
             if (prompts[i].id === dateentry[0].prompt) {
                 return prompts[i].statement

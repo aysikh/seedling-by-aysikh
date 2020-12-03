@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { Collapse } from '@material-ui/core';
 import ArrowForwardOutlinedIcon from '@material-ui/icons/ArrowForwardOutlined';
 import axios from 'axios'
-import WebInfo from '../assets/webinfogreen.png'
+import Welcome from '../assets/welcome.png'
 
 
 function Copyright() {
@@ -33,11 +33,15 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-  grid: {
-    height: '50vh',
+  position: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 'auto',
+    marginTop: '5rem'
   },
   paperContent: {
-    margin: theme.spacing(4, 6),
+    margin: theme.spacing(6, 8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -50,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginBottom: theme.spacing(4),
     alignItems: "center",
+    marginTop: '1rem'
   },
   submit: {
     margin: '3px',
@@ -121,13 +126,14 @@ export default function LogInForm({checked}, props) {
 
       
     return (
-      <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
-      <Grid container spacing={24} component="main" className={classes.grid} >
+      <div>
+
+      <Grid container spacing={20} component="main" style={{ alignItems: 'center'}} >
           <CssBaseline />
-          <Grid item xs={4} >
-            <img src={WebInfo} style={{height: '35rem', marginRight: '82rem'}}/>
-          </Grid>
-          <Grid item xs={3} component={Paper} elevation={6} style={{marginLeft: '10rem'}}>
+          <Grid item xs={6} >
+                <img src={Welcome} style={{height: '27rem', marginTop: '5rem'}}/>
+            </Grid>
+          <Grid item xs={4} component={Paper} elevation={6} className={classes.position}>
           <div className={classes.paperContent}>
               <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
@@ -198,8 +204,8 @@ export default function LogInForm({checked}, props) {
               </div>
           </div>
           </Grid>
-      </Grid>
-   </Collapse>
+    </Grid>
+    </div> 
     )
   
 }

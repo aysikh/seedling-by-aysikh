@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import Logo from '../assets/signinlogo1.png'
+import Logo from '../assets/logo6.png'
 import Paper from '@material-ui/core/Paper'
 
 const GOALS_URL = "http://localhost:3001/goals"
@@ -164,6 +164,7 @@ export default function NewUserForm(props) {
   }
 
 
+
   return (
     
     <Container component="main" maxWidth="xs">
@@ -171,7 +172,7 @@ export default function NewUserForm(props) {
       <CssBaseline />
       <Paper>
       <div className={classes.paper}>
-        <img src={Logo} style={{height: "25vh"}}/>
+        <img src={Logo} style={{height: "20vh"}}/>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
@@ -248,7 +249,7 @@ export default function NewUserForm(props) {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/" variant="body2">
+              <Link href="/existing" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

@@ -6,20 +6,16 @@ import { Link as Scroll } from 'react-scroll';
 import { CssBaseline } from '@material-ui/core';
 import SortIcon from '@material-ui/icons/Sort';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import Logo from '../assets/logo3.png'
+import Logo from '../assets/logo6.png'
 import Navbar2 from './Navbar2'
+import InfoContainer from '../containers/InfoContainer'
+import TopLogo from '../assets/logo7.png'
 
 import DailyEntryForm from './DailyEntryForm'
 // import BG from '../assets/bg.jpg'
 import LogContainer from '../containers/LogContainer'
 
     const useStyles = makeStyles((theme) => ({
-        // bg: {
-        //     minHeight: '100vh',
-        //     backgroundImage: `url(${BG})`,
-        //     backgroundRepeat: 'no-repeat',
-        //     backgroundSize: 'cover',
-        //   },
         root: {
             display: 'flex',
             justifyContent: 'center',
@@ -27,7 +23,8 @@ import LogContainer from '../containers/LogContainer'
             height: '100vh',
             boxShadow: 'none',
             margin: '0',
-            border: '0'
+            border: '0',
+            overflowX: 'hidden'
         },
         appbar: {
             backgroundColor: 'transparent',
@@ -92,7 +89,7 @@ import LogContainer from '../containers/LogContainer'
             <AppBar className={classes.appbar}>
                 <Toolbar className={classes.appbarWrapper} >
                     <h1 className={classes.appbarTitle}>
-                        <img src={Logo} style={{marginLeft: '-30px'}}/> 
+                        <img src={TopLogo} style={{marginLeft: '-30px'}}/> 
                     </h1>
                     <Navbar2 />
                 </Toolbar>
@@ -109,16 +106,17 @@ import LogContainer from '../containers/LogContainer'
                     <span className={classes.colorText}>growth</span>
                 </h1>
                 <h3>start watering yourself. </h3>
-                <Scroll to="log-in-form" smooth={true}>
+                <Scroll to="info-image" smooth={true}>
                     <IconButton>
-                    <KeyboardArrowDownIcon className={classes.goDown} />
+                        <KeyboardArrowDownIcon className={classes.goDown} />
                     </IconButton>
                 </Scroll>
                 </div>
             </Collapse>
 
             </div>
-        <LogContainer />  
+        <LogContainer /> 
+        <InfoContainer /> 
         </div>
     );
     }

@@ -93,7 +93,7 @@ const CalendarContainer = () => {
       return dates
 }
 
-
+// console.log(dailyentries)
 // if there the dailyentry date matches with a day on the calendar,
 // it should return an image
 // I know dailyentry's date = 

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import * as dateFns from "date-fns";
 import "./Calendar.css";
-import Seed from '../assets/seed.png'
 import Heart from '../assets/heart.png'
 
 const Calendar = (props) => {
@@ -67,21 +66,30 @@ const Calendar = (props) => {
         while (day <= endDate) {
             for (let i = 0; i < 7; i++) {
                 formattedDate = dateFns.format(day, dateFormat);
+                let hasEntry = props.parsedDateEntry().find(entry => {
+                    // return formattedDate == entry.date
+                    // console.log(entry.date)
+                    let x = new Date(entry.date)
+                    return x.getDate() == formattedDate && dateFns.isSameMonth(day, monthStart) && dateFns.isSameMonth(x, monthStart)
+                })
+                // console.log(hasEntry)
+                console.log(formattedDate)
                 const cloneDay = day;
                 days.push(
                     <div
-                        className={`column cell ${!dateFns.isSameMonth(day, monthStart)
-                            ? "disabled" : dateFns.isSameDay(day, props.selectedDate)
-                                ? "selected" : "" }`}
+                    className={`column cell ${!dateFns.isSameMonth(day, monthStart)
+                        ? "disabled" : dateFns.isSameDay(day, props.selectedDate)
+                        ? "selected" : "" }`}
                         key={day}
                         onClick={(event) => onDateClick(dateFns.format(cloneDay, 'MM-dd-yyyy'), props.handleClick(event))}
-                    >
+                        >
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
-                        <img src={Heart} style={{height: '4.5rem', marginLeft: '1rem', marginTop: '.3rem'}}/>
+                        <img src={hasEntry ? Heart : null} style={{height: '4.5rem', marginLeft: '1rem', marginTop: '.3rem'}}/>
                     </div>
                 );
                 day = dateFns.addDays(day, 1);
+                
             }
             rows.push(
                 <div className="row" key={day}> {days} </div>

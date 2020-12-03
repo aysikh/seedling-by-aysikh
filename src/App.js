@@ -11,13 +11,13 @@ import DailyEntryForm from './components/DailyEntryForm'
 import LandingPage from './components/LandingPage'
 import BG from './assets/bg.jpg'
 import BlogPostContainer from './containers/BlogPostContainer'
-
 import HomepageContainer from './containers/HomepageContainer'
 import CalendarContainer from './containers/CalendarContainer'
-import BlogPostForm from './components/BlogPostForm'
+// import BlogPostForm from './components/BlogPostForm'
 import LogOutContainer from './containers/LogOutContainer';
-import StatsContainer from './containers/StatsContainer'
-
+// import StatsContainer from './containers/StatsContainer'
+import LogInContainer from './containers/LogInContainer'
+// import NoMatchPage from './components/NoMatchPage'
 
 const useStyles = makeStyles((theme) => ({
   bg: {
@@ -36,38 +36,6 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
 
-  const [isLoggedIn, setIsLoggedIn]=useState(false)
-  const [user, setUser]=useState({})
-  
-
-  const handleLogin = (data) => {
-    setIsLoggedIn(true)
-    setUser(data.user)
-  }
-
-  const handleLogout = () => {
-    setIsLoggedIn(false)
-    setUser(null)
-  }
-
-  const loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', 
-   {withCredentials: true})
-    .then(response => {
-      if (response.data.logged_in) {
-        this.handleLogin(response)
-      } else {
-        this.handleLogout()
-      }
-    })
-    .catch(error => console.log('api errors:', error))
-  }
-
-  useEffect(() => {
-    loginStatus()
-  }, [])
-
-
     return(
     <BrowserRouter>
       <div className={classes.bg}>
@@ -82,10 +50,11 @@ export default function App() {
             <Route exact path="/user" component={MainContainer} />
             <Route path="/calendar" component={CalendarContainer} />
             <Route path="/blogpost" component={BlogPostContainer} />
-            <Route path="/stats" component={StatsContainer} />
+            {/* <Route path="/stats" component={StatsContainer} /> */}
             <Route path="/newuser" component={NewUserContainer} />
             <Route path="/dailyentry" component={DailyEntryForm} />
             <Route path="/logout" component={LogOutContainer} />
+            <Route path="/existing" component={LogInContainer} />
             {/* <Route component={NoMatchPage} /> */}
           </div>
         </Switch>
