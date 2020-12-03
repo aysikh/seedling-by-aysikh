@@ -10,6 +10,7 @@ import Popper from '@material-ui/core/Popper';
 import Grid from '@material-ui/core/Grid';
 import Fade from '@material-ui/core/Fade';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import CreateIcon from '@material-ui/icons/Create';
 
 const BLOGPOSTS_URL = "http://localhost:3001/blog_posts"
 const USERS_URL = "http://localhost:3001/users/1"
@@ -52,7 +53,7 @@ export default function BlogPostForm() {
       minWidth: 550,
     }, 
     icon: {
-      fontSize: "5.5rem"
+      fontSize: "5.5rem",
     }
   }))
 
@@ -184,7 +185,11 @@ export default function BlogPostForm() {
         direction="column" 
         style={{position: "absolute", maxWidth: '15%'}}>
         <Grid item>
-          <Button onClick={handleClick('right-start')}><AddCircleIcon className={classes.icon}/></Button>
+          <Button 
+            style={{marginLeft: '-12.5rem', marginTop: '-1.5rem'}} 
+            onClick={handleClick('right-start')} >
+              <AddCircleIcon style={{fontSize: "5.5rem", color: '#00695c'}}/>
+          </Button>
         </Grid>
       </Grid>
     </div>

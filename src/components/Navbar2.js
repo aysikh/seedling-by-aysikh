@@ -10,7 +10,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
+
 import { NavLink, Redirect, Link } from 'react-router-dom'
 import SortIcon from '@material-ui/icons/Sort';
 import Image from '../assets/navbar2.gif'
@@ -82,30 +83,30 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-          {<Link to="/home" className={classes.link}>
+        {<Link to="/home" className={classes.link}>
             <ListItem button key={"Homepage"} className={classes.text}>
-
             <ListItemText primary={"Homepage"} style={{height: '2.5rem'}} />
             </ListItem>
-          </Link>}
-          {<Link to="/dailyentry" className={classes.link}>
-            <ListItem button key={"Add Daily Entry"} className={classes.text}>
+        </Link>}
 
+        {<Link to="/dailyentry" className={classes.link}>
+            <ListItem button key={"Add Daily Entry"} className={classes.text}>
             <ListItemText primary={"Add Daily Entry"} style={{height: '2.5rem'}}/>
             </ListItem>
-          </Link>}
-          {<Link to="/blogpost" className={classes.link}>
-            <ListItem button key={"Blog Posts"} className={classes.text}>
+        </Link>}
 
-            <ListItemText primary={"Blog Posts"} style={{height: '2.5rem'}}/>
-            </ListItem>
-            </Link>}
-          {<Link to="/calendar" className={classes.link}>
+        {<Link to="/calendar" className={classes.link}>
             <ListItem button key={"Calendar"} className={classes.text}>
-
             <ListItemText primary={"Calendar"} style={{height: '2.5rem'}}/>
             </ListItem>
-          </Link>}
+        </Link>}
+
+        {<Link to="/blogpost" className={classes.link}>
+            <ListItem button key={"Blog Posts"} className={classes.text}>
+            <ListItemText primary={"Blog Posts"} style={{height: '2.5rem'}}/>
+            </ListItem>
+        </Link>}
+
         </List>
         <Divider />
         {<NavLink to="/logout" className={classes.link}>
@@ -127,12 +128,12 @@ export default function SwipeableTemporaryDrawer() {
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <IconButton style={{marginLeft: '100rem', marginTop: '2rem', color: '#006064'}}>
-            <SortIcon 
+            <MenuOpenIcon 
             onClick={toggleDrawer(anchor, true)}
             style={{fontSize: '3rem'}}
             >
               {anchor}
-            </SortIcon>
+            </MenuOpenIcon>
             </IconButton>
           <SwipeableDrawer
             anchor={anchor}
