@@ -58,11 +58,11 @@ const Stats = props => {
                                 label: 'your mood rating',
                                 data: ratingsForLastWeek(),
                                 lineTension: 0,
-                                borderColor: "#90caf9",
+                                borderColor: "#519657",
                                 borderWidth: "3",
                                 hoverBorderColor: "#000",
                                 backgroundColor: [
-                                    '#bbdefb'
+                                    '#a5d6a7'
                                 ]
                             },
                         ],

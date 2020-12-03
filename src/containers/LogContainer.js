@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import LogInForm from '../components/LogInForm'
 import useWindowPosition from '../hook/useWindowPosition';
 import NewUserForm from '../components/NewUserForm'
-import WebInfo from '../assets/webinfogreen.png'
 import Grid from '@material-ui/core/Grid';
 import InfoImage from '../components/InfoImage'
 import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';

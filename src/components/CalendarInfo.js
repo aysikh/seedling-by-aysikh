@@ -27,6 +27,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 
 
 const CalendarInfo = ( props ) => {
+    console.log(props.parsedDateEntry())
 
     const classes = useStyles();
     const [ prompts, setPrompts ] = useState( "" );
