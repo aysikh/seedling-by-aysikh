@@ -49,10 +49,11 @@ const useStyles = makeStyles( ( theme ) => ( {
         textAlign: "center",
         borderStyle: 'solid',
         color: "#000",
-        border: "solid 4px transparent",
+        border: "solid 4px #004d40",
+        borderRadius: '15px',
         padding: "12px 12px 12px 12px",
         margin: "0px 0px 10px 0",
-        height: "17.5rem",
+        height: "14.5rem",
         margin: "8px"
     },
     image: {}
@@ -166,7 +167,11 @@ export default function MoodForm() {
                 <form className={ classes.root } noValidate autoComplete="off" onSubmit={ ( event ) => {
                     handleSubmit( event )
                 } }>
-                    <label><Typography variant="h3"><b> How are you feeling right now?</b></Typography></label>
+                    <center>
+                            <label style={{fontSize: '2.3rem', color: '#004d40'}}>
+                            How are you feeling right now?
+                            </label>
+                        </center>
                     <br/> <br/> <br/>
                     <center>
                         <input

@@ -85,7 +85,7 @@ import LogContainer from '../containers/LogContainer'
             <AppBar className={classes.appbar}>
                 <Toolbar className={classes.appbarWrapper} >
                     <h1 className={classes.appbarTitle}>
-                        <img src={TopLogo} style={{marginLeft: '70rem', height: '10rem'}}/> 
+                        <img src={TopLogo} style={{marginLeft: '80rem', height: '8rem'}}/> 
                     </h1>
                     <Navbar2 />
                 </Toolbar>
@@ -93,15 +93,15 @@ import LogContainer from '../containers/LogContainer'
 
             <Collapse
                 in={checked}
-                {...(checked ? { timeout: 1000 } : {})}
+                {...(checked ? { timeout: 2000 } : {})}
                 collapsedHeight={50}
                 >
                 <div className={classes.container}>
                 <h1 className={classes.title}>
-                    track your  <br />
-                    <span className={classes.colorText}>growth</span>
+                    watch yourself  <br />
+                    <span style={{color: '#1b5e20'}}>grow</span>
                 </h1>
-                <h3>learn more. </h3>
+                <h3>learn more below </h3>
                 <Scroll to="info-image" smooth={true}>
                     <IconButton>
                         <KeyboardArrowDownIcon style={{color: '#006064', fontSize: '5rem'}} />

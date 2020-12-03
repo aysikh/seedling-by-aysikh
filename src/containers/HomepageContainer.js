@@ -12,9 +12,11 @@ import Quote1 from '../assets/quote1.gif'
 import Grid from '@material-ui/core/Grid';
 import { useTheme } from '@material-ui/core/styles';
 
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Stats from '../components/Stats'
+import ToDoContainer from '../containers/TodoContainer'
 import Gif from '../assets/navbar.gif'
+import Egg from '../assets/egg.gif'
+import Cloudy from '../assets/cloudy.gif'
 
 const DAILY_ENTRY_URL = "http://localhost:3001/daily_entries"
 
@@ -71,7 +73,7 @@ export default function HomepageContainer() {
         getDailyEntries()
     }, [] )
 
-    const currentTime = () => {
+    const currentGreeting = () => {
         let date = new Date();
         let hours = date.getHours();
 
@@ -93,7 +95,7 @@ export default function HomepageContainer() {
                     <br/>
                     <Grid container justify="center" spacing={ spacing }>
                         <div>
-                            { currentTime() }
+                           <h1>  { currentGreeting() }  <img src={Cloudy} style={{height: '3.5rem'}}/>  </h1>
                         </div>
                         <br/> <br/>
                     </Grid>
@@ -108,7 +110,8 @@ export default function HomepageContainer() {
                             />
                         </Grid>
                         <Grid item xs={ 4 }>
-                            <img src={ Gif } style={ { marginLeft: '12rem', marginTop: '12rem' } }/>
+                            {/* <img src={ Gif } style={ { marginLeft: '12rem', marginTop: '12rem' } }/> */}
+                            <ToDoContainer />
                         </Grid>
                     </Grid>
                 </Paper>

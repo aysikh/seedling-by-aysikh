@@ -84,19 +84,25 @@ const Stats = props => {
                                 top: 10
                             },
                         },
-                        scales: {
-                            yAxes: [
-                                {
-                                    ticks: {
-                                        beginAtZero: true,
-                                        steps: 5,
-                                        stepSize: 1,
+                        options: {
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            beginAtZero: true,
+                                            steps: 5,
+                                            stepSize: 1,
 
+                                        },
                                     },
-                                },
-                            ],
+                                ],
+                            },
+                            animation: {
+                                duration: 3000,
+                                easing: 'easeOutBack'
+                            },
                         },
-                    } }
+                    }}
                 />
             </Paper>
         </div>

@@ -48,11 +48,13 @@ const useStyles = makeStyles( ( theme ) => ( {
     },
     withBorder: {
         textAlign: "center",
+        borderStyle: 'solid',
         color: "#000",
-        border: "solid 4px transparent",
+        border: "solid 4px #004d40",
+        borderRadius: '15px',
         padding: "12px 12px 12px 12px",
         margin: "0px 0px 10px 0",
-        height: "14.5rem",
+        height: "13.5rem",
         margin: "8px"
     },
 
@@ -210,7 +212,7 @@ export default function EditDailyEntryForm( props ) {
                             <br/>
                             <br/>
                             <center>
-                                <label>Prompt Here </label>
+                                <label>What are you thankful for today?  </label>
                                 <br/>
                                 <br/>
                                 {/* <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}> */ }

@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 'auto',
-    marginTop: '5rem'
+    marginLeft: '37rem',
+    marginTop: 'auto'
   },
   paperContent: {
     margin: theme.spacing(6, 8),
@@ -130,17 +130,15 @@ export default function LogInForm({checked}, props) {
 
       <Grid container spacing={20} component="main" style={{ alignItems: 'center'}} >
           <CssBaseline />
-          <Grid item xs={6} >
+          {/* <Grid item xs={6} >
                 <img src={Welcome} style={{height: '27rem', marginTop: '5rem'}}/>
-            </Grid>
-          <Grid item xs={4} component={Paper} elevation={6} className={classes.position}>
+            </Grid> */}
+          <Grid item s={8} component={Paper} elevation={6} className={classes.position}>
           <div className={classes.paperContent}>
-              <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-              Sign in
-              </Typography>
+              <img src={Welcome} style={{height: '16rem', marginTop: '0rem'}} />
+              {/* <Typography component="h1" variant="h5"> */}
+              {/* Sign in */}
+              {/* </Typography> */}
               <form className={classes.form} noValidate onSubmit={handleSubmit}>
               <TextField
                   variant="outlined"

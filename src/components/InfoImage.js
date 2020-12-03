@@ -6,7 +6,7 @@ export default function InfoImage(){
     return (
         <div>
             <Grid item xs={6} >
-                <img src={WebInfo} style={{height: '36rem', marginRight: '50rem'}}/>
+                <img src={WebInfo} style={{height: '36rem', marginRight: '50rem', marginTop: '5rem'}}/>
             </Grid>
         </div>
     )

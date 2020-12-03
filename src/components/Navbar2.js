@@ -53,10 +53,6 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     textAlign: 'right'
   },
-  icon: {
-    color: "#0D791E",
-    marginRight: 'auto'
-  },
   link: {
     textDecoration: 'none',
   }
@@ -88,25 +84,25 @@ export default function SwipeableTemporaryDrawer() {
       <List>
           {<Link to="/home" className={classes.link}>
             <ListItem button key={"Homepage"} className={classes.text}>
-            {/* <ListItemIcon className={classes.icon} > <HomeIcon /> </ListItemIcon> */}
+
             <ListItemText primary={"Homepage"} style={{height: '2.5rem'}} />
             </ListItem>
           </Link>}
           {<Link to="/dailyentry" className={classes.link}>
             <ListItem button key={"Add Daily Entry"} className={classes.text}>
-            {/* <ListItemIcon className={classes.icon}> <InsertEmoticonIcon /> </ListItemIcon> */}
+
             <ListItemText primary={"Add Daily Entry"} style={{height: '2.5rem'}}/>
             </ListItem>
           </Link>}
           {<Link to="/blogpost" className={classes.link}>
             <ListItem button key={"Blog Posts"} className={classes.text}>
-            {/* <ListItemIcon className={classes.icon}> <MenuBookIcon /> </ListItemIcon> */}
+
             <ListItemText primary={"Blog Posts"} style={{height: '2.5rem'}}/>
             </ListItem>
             </Link>}
           {<Link to="/calendar" className={classes.link}>
             <ListItem button key={"Calendar"} className={classes.text}>
-            {/* <ListItemIcon className={classes.icon}> <CalendarTodayIcon /> </ListItemIcon> */}
+
             <ListItemText primary={"Calendar"} style={{height: '2.5rem'}}/>
             </ListItem>
           </Link>}
@@ -130,7 +126,7 @@ export default function SwipeableTemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <IconButton style={{marginLeft: '100rem', marginTop: '2rem', color: 'green'}}>
+          <IconButton style={{marginLeft: '100rem', marginTop: '2rem', color: '#006064'}}>
             <SortIcon 
             onClick={toggleDrawer(anchor, true)}
             style={{fontSize: '3rem'}}
