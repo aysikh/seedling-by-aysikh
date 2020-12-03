@@ -159,7 +159,7 @@ export default function NewUserForm(props) {
     }
     fetch("http://localhost:3001/users", requestPackage)
     .then(rsp => rsp.json())
-    .then(console.log)
+    .then(history.push("/home"))
     // history.push("/home")
   }
 
