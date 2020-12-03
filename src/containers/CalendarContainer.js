@@ -67,13 +67,13 @@ const CalendarContainer = () => {
     const id = open ? 'simple-popover' : undefined;
 
     const parsedDateEntry = () => {
-        let parsedDate = []
         let dates = []
         if ( dailyentries ) {
             dailyentries.map( dailyentry => {
-                let info = {}
+                const info = {};
+                const parsedDate = dateFns.parseISO( dailyentry.date );
                 info.id = dailyentry.id
-                info.date = dateFns.parseISO( dailyentry.date )
+                info.date = dateFns.format( parsedDate, 'MM-dd-yyyy' )
                 info.rating = dailyentry.rating
                 info.prompt = dailyentry.prompt_id
                 info.content = dailyentry.content
