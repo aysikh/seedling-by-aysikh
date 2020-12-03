@@ -75,6 +75,7 @@ const Calendar = (props) => {
                 // console.log(hasEntry)
                 // console.log(formattedDate)
                 const cloneDay = day;
+                console.log( cloneDay )
                 days.push(
                     <div
                     className={`column cell ${!dateFns.isSameMonth(day, monthStart)
