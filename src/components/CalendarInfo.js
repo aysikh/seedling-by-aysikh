@@ -74,7 +74,7 @@ const CalendarInfo = ( props ) => {
             return x[ 0 ].content
         }
         else {
-            return randomPrompt
+            return null
         }
     }
 

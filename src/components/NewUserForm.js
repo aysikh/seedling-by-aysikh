@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import Logo from '../assets/logo6.png'
+import Logo from '../assets/signinlogo.png'
 import Paper from '@material-ui/core/Paper'
 
 const GOALS_URL = "http://localhost:3001/goals"

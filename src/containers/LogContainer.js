@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
               <center>
                 <InfoImage checked={checked}/>
                   <IconButton>
-                    <KeyboardArrowDownIcon style={{fontSize: '4rem', color: 'green'}} />
+                    <KeyboardArrowDownIcon style={{fontSize: '6rem', color: '#004d40'}} />
                   </IconButton>
               </center>
             </Scroll>
