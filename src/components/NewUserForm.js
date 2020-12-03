@@ -20,252 +20,253 @@ import Paper from '@material-ui/core/Paper'
 const GOALS_URL = "http://localhost:3001/goals"
 
 function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://localhost:3001/login">
-        Seedling
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            { 'Copyright © ' }
+            <Link color="inherit" href="https://localhost:3001/login">
+                Seedling
+            </Link>{ ' ' }
+            { new Date().getFullYear() }
+            { '.' }
+        </Typography>
+    );
 }
 
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    // marginTop: theme.spacing(5),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginBottom: theme.spacing(2)
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '90%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+const useStyles = makeStyles( ( theme ) => ( {
+    paper: {
+        // marginTop: theme.spacing(5),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginBottom: theme.spacing( 2 )
+    },
+    avatar: {
+        margin: theme.spacing( 1 ),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+        width: '90%', // Fix IE 11 issue.
+        marginTop: theme.spacing( 3 ),
+    },
+    submit: {
+        margin: theme.spacing( 3, 0, 2 ),
+    },
+} ) );
 
-export default function NewUserForm(props) {
-  let history = useHistory();
-  
-  const [name, setName]=useState("")
-  const [email, setEmail]=useState("")
-  const [password,setPassword]=useState("")
-  const [goals, setGoals]=useState([])
-  const [errors, setErrors]=useState([])
-  const [checkedItems, setCheckedItems] = useState({})
-  const classes = useStyles();
-  
-  const handleName = (event) => {
-    setName(event.target.value)
-  }
-  
-  const handleEmail = (event) => {
-    setEmail(event.target.value)
-  }
-  
-  const handlePassword = (event) => {
-    setPassword(event.target.value)
-  }
+export default function NewUserForm( props ) {
+    let history = useHistory();
 
-  const handleGoals = (event) => {
-    setGoals(event.target.value)
-  }
-  
-  const handleChange = (event) => {
-    setCheckedItems({...checkedItems, [event.target.value] : event.target.checked})
-  }
+    const [ name, setName ] = useState( "" )
+    const [ email, setEmail ] = useState( "" )
+    const [ password, setPassword ] = useState( "" )
+    const [ goals, setGoals ] = useState( [] )
+    const [ errors, setErrors ] = useState( [] )
+    const [ checkedItems, setCheckedItems ] = useState( {} )
+    const classes = useStyles();
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const {username, email, password, password_confirmation} = this.state
-    let user = {
-      name: name,
-      email: email,
-      password: password,
-      goals: goals
+    const handleName = ( event ) => {
+        setName( event.target.value )
     }
 
-    axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
-        .then(response => {
-          if (response.data.status === 'created') {
-            props.handleLogin(response.data)
-            redirect()
-          } else {
-            setErrors({
-              errors: response.data.errors
-            })
-          }
-        })
-        .catch(error => console.log('api errors:', error))
-      };
+    const handleEmail = ( event ) => {
+        setEmail( event.target.value )
+    }
+
+    const handlePassword = ( event ) => {
+        setPassword( event.target.value )
+    }
+
+    const handleGoals = ( event ) => {
+        setGoals( event.target.value )
+    }
+
+    const handleChange = ( event ) => {
+        setCheckedItems( { ...checkedItems, [ event.target.value ]: event.target.checked } )
+    }
+
+    const handleSubmit = ( event ) => {
+        event.preventDefault()
+        const { username, email, password, password_confirmation } = this.state
+        let user = {
+            name: name,
+            email: email,
+            password: password,
+            goals: goals
+        }
+
+        axios.post( 'http://localhost:3001/users', { user }, { withCredentials: true } )
+            .then( response => {
+                if ( response.data.status === 'created' ) {
+                    props.handleLogin( response.data )
+                    redirect()
+                }
+                else {
+                    setErrors( {
+                        errors: response.data.errors
+                    } )
+                }
+            } )
+            .catch( error => console.log( 'api errors:', error ) )
+    };
 
     const redirect = () => {
-        props.history.push('/')
-      }
+        props.history.push( '/' )
+    }
 
     const handleErrors = () => {
         return (
-          <div>
-            <ul>{errors.map((error) => {
-              return <li key={error}>{error}</li>
-            })}
-            </ul> 
-          </div>
+            <div>
+                <ul>{ errors.map( ( error ) => {
+                    return <li key={ error }>{ error }</li>
+                } ) }
+                </ul>
+            </div>
         )
-      }
-
-  const getGoals = async () =>{
-    try {
-      const userGoals = await
-      axios.get(GOALS_URL)
-      // console.log(userGoals.data);
-      setGoals(userGoals.data);
-    } catch (err){
-      alert(err.message);
     }
-  }
-  
-  useEffect(()=>{
-    getGoals()
-  }, [])
-  
-  useEffect(()=>{
-    console.log("checkedItems: ", checkedItems);
-  },[checkedItems])
-  
-  
-  const handleNewUserSubmit = (event) =>{
-    event.preventDefault()
-    
-    let requestPackage ={
-      headers: {'Content-Type':'application/json'},
-      method: 'POST',
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-        goals: checkedItems
-      })
+
+    const getGoals = async () => {
+        try {
+            const userGoals = await
+                axios.get( GOALS_URL )
+            // console.log(userGoals.data);
+            setGoals( userGoals.data );
+        } catch ( err ) {
+            alert( err.message );
+        }
     }
-    fetch("http://localhost:3001/users", requestPackage)
-    .then(rsp => rsp.json())
-    .then(history.push("/home"))
-    // history.push("/home")
-  }
+
+    useEffect( () => {
+        getGoals()
+    }, [] )
+
+    useEffect( () => {
+        console.log( "checkedItems: ", checkedItems );
+    }, [ checkedItems ] )
 
 
+    const handleNewUserSubmit = ( event ) => {
+        event.preventDefault()
 
-  return (
-    
-    <Container component="main" maxWidth="xs">
-      <Grid container component="main" >
-      <CssBaseline />
-      <Paper>
-      <div className={classes.paper}>
-        <img src={Logo} style={{height: "20vh"}}/>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form 
-          className={classes.form} 
-          noValidate 
-          onSubmit={(event) => {
-          handleNewUserSubmit(event)}}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                onChange={handleName}
-                name="name"
-                variant="outlined"
-                required
-                fullWidth
-                type="name"
-                id="name"
-                label="Name: "
-              />
+        let requestPackage = {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify( {
+                name: name,
+                email: email,
+                password: password,
+                goals: checkedItems
+            } )
+        }
+        fetch( "http://localhost:3001/users", requestPackage )
+            .then( rsp => rsp.json() )
+        // .then(console.log)
+        history.push( "/home" )
+    }
+
+
+    return (
+
+        <Container component="main" maxWidth="xs">
+            <Grid container component="main">
+                <CssBaseline/>
+                <Paper>
+                    <div className={ classes.paper }>
+                        <img src={ Logo } style={ { height: "20vh" } }/>
+                        <Typography component="h1" variant="h5">
+                            Sign up
+                        </Typography>
+                        <form
+                            className={ classes.form }
+                            noValidate
+                            onSubmit={ ( event ) => {
+                                handleNewUserSubmit( event )
+                            } }>
+                            <Grid container spacing={ 2 }>
+                                <Grid item xs={ 12 }>
+                                    <TextField
+                                        onChange={ handleName }
+                                        name="name"
+                                        variant="outlined"
+                                        required
+                                        fullWidth
+                                        type="name"
+                                        id="name"
+                                        label="Name: "
+                                    />
+                                </Grid>
+                                <Grid item xs={ 12 }>
+                                    <TextField
+                                        onChange={ handleEmail }
+                                        name="email"
+                                        variant="outlined"
+                                        required
+                                        fullWidth
+                                        type="email"
+                                        id="email"
+                                        label="Email Address: "
+                                    />
+                                </Grid>
+                                <Grid item xs={ 12 }>
+                                    <TextField
+                                        onChange={ handlePassword }
+                                        variant="outlined"
+                                        required
+                                        fullWidth
+                                        name="password"
+                                        label="Password"
+                                        id="password"
+                                        autoComplete="current-password"
+                                    />
+                                </Grid>
+                                <label><h2>What are you looking to improve?</h2></label>
+                                <Grid container item xs={ 12 }>
+                                    { goals.map( goal => (
+                                        <Grid item xs={ 6 }>
+                                            <FormControlLabel
+                                                key={ goal.id }
+                                                control={ <Checkbox
+                                                    value={ goal.name }
+                                                    icon={ <FavoriteBorder/> }
+                                                    checkedIcon={ <Favorite/> }
+                                                    color="secondary"
+                                                    checked={ checkedItems[ goal.name ] }
+                                                    onChange={ handleChange }
+                                                /> }
+                                                label={ goal.name }
+                                            />
+                                        </Grid>
+                                    ) ) }
+                                </Grid>
+                            </Grid>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={ classes.submit }
+                            >
+                                Sign Up
+                            </Button>
+                            <Grid container justify="flex-end">
+                                <Grid item>
+                                    <Link href="/existing" variant="body2">
+                                        Already have an account? Sign in
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                        </form>
+                    </div>
+                    <Box mt={ 5 }>
+                        <Copyright/>
+                    </Box>
+                    <div>
+                        {
+                            errors ? handleErrors() : null
+                        }
+                    </div>
+                </Paper>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-              onChange={handleEmail}
-                name="email"
-                variant="outlined"
-                required
-                fullWidth
-                type="email"
-                id="email"
-                label="Email Address: "
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-              onChange={handlePassword}
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-              <label><h2>What are you looking to improve?</h2></label>
-            <Grid container item xs={12}>
-              {goals.map(goal => (
-                <Grid item xs={6}>
-                  <FormControlLabel
-                    key={goal.id}
-                    control={<Checkbox 
-                      value={goal.name} 
-                      icon={<FavoriteBorder />} 
-                      checkedIcon={<Favorite />} 
-                      color="secondary" 
-                      checked={checkedItems[goal.name]}
-                      onChange={handleChange}
-                      />}
-                    label={goal.name}
-                  />
-                </Grid>
-                  ))}
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/existing" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-      <div>
-          {
-            errors ? handleErrors() : null
-          }
-        </div>
-      </Paper>
-    </Grid>
-    </Container>
-  );
+        </Container>
+    );
 }
