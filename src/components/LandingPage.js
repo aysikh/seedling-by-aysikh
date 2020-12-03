@@ -9,7 +9,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Logo from '../assets/logo6.png'
 import Navbar2 from './Navbar2'
 import InfoContainer from '../containers/InfoContainer'
-import TopLogo from '../assets/logo7.png'
+import TopLogo from '../assets/logo8.png'
 
 import DailyEntryForm from './DailyEntryForm'
 // import BG from '../assets/bg.jpg'
@@ -55,10 +55,6 @@ import LogContainer from '../containers/LogContainer'
             color: 'black',
             fontSize: '4.5rem',
         },
-        goDown: {
-            color: '#1a904b',
-            fontSize: '4rem',
-        },
         div:{
             margin: '0',
             border: '0'
@@ -89,7 +85,7 @@ import LogContainer from '../containers/LogContainer'
             <AppBar className={classes.appbar}>
                 <Toolbar className={classes.appbarWrapper} >
                     <h1 className={classes.appbarTitle}>
-                        <img src={TopLogo} style={{marginLeft: '-30px'}}/> 
+                        <img src={TopLogo} style={{marginLeft: '70rem', height: '10rem'}}/> 
                     </h1>
                     <Navbar2 />
                 </Toolbar>
@@ -105,10 +101,10 @@ import LogContainer from '../containers/LogContainer'
                     track your  <br />
                     <span className={classes.colorText}>growth</span>
                 </h1>
-                <h3>start watering yourself. </h3>
+                <h3>learn more. </h3>
                 <Scroll to="info-image" smooth={true}>
                     <IconButton>
-                        <KeyboardArrowDownIcon className={classes.goDown} />
+                        <KeyboardArrowDownIcon style={{color: '#006064', fontSize: '5rem'}} />
                     </IconButton>
                 </Scroll>
                 </div>

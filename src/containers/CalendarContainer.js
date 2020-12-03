@@ -93,13 +93,8 @@ const CalendarContainer = () => {
         return dates
     }
 
-console.log(dailyentries)
-// if there the dailyentry date matches with a day on the calendar,
-// it should return an image
-// I know dailyentry's date = 
-// I need to map through the array of parsedDateentries and match it up with the dates on the calendar
-
-
+// console.log(parsedDateEntry())
+// console.log(dailyentries)
     return (
         <div>
             <br/>
