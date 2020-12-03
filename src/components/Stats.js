@@ -103,4 +103,4 @@ const Stats = props => {
     )
 }
 
-export default Stats
+export default Stats;
