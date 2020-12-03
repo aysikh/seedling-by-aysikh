@@ -1,112 +1,106 @@
 import React from 'react';
-import { Bar, Line} from 'react-chartjs-2'
+import * as dateFns from "date-fns";
+import { Line } from 'react-chartjs-2'
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import Bear1 from '../assets/bear5.png'
-import moment from 'moment'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '40rem',
-    width: '65rem',
-    marginLeft: '3rem'
-  },
-}))
+const useStyles = makeStyles( ( theme ) => ( {
+    root: {
+        height: '40rem',
+        width: '65rem',
+        marginLeft: '3rem'
+    },
+} ) )
 
+const Stats = props => {
+    const classes = useStyles()
 
+    const lastWeek = dateFns.eachDayOfInterval( {
+        start: dateFns.subDays( new Date(), 6 ),
+        end: new Date()
+    } ).map( date => dateFns.format( date, 'MM/dd' ) )
 
+    const ratingsForLastWeek = () => {
+        if ( !props.dailyEntries ) return;
 
-const Stats = () => {
-  const classes = useStyles()
+        const ratingMap = new Map();
 
-  let start = new Date();
-//   let end = new Date();
+        props.dailyEntries.forEach( entry => {
+            const date = dateFns.parseISO( entry.date );
+            const entryDate = dateFns.format( date, 'MM/dd' )
 
-start = start.setDate(start.getDate() - 7); // set to 'now' minus 7 days.
-// start.setHours(0, 0, 0, 0); // set to midnight.
+            if ( lastWeek.includes( entryDate ) ) {
+                ratingMap.set( entryDate, entry.rating );
+            }
+        } )
 
-  let timeFormat = 'MM-dd-yyyy'
+        return lastWeek.reduce( ( arr, day ) => {
+            if ( ratingMap.has( day ) ) {
+                arr.push( ratingMap.get( day ) );
+            }
+            else {
+                arr.push( 0 );
+            }
 
-  const newDate = (days) => {
-    // for (let i=1; i <= 7; i++){
-    //   return newDate[i] = moment().subtract(i, 'days').format("DD MM YYYY")
-    // }
-    let x = moment().subtract(days, 'd').toDate();
-    console.log(x)
-    return x
-  }
-  const newDateString = (days) => {
-    let y = moment().add(days, 'd').format(timeFormat);
-    console.log(y)
-    return y
-}
+            return arr;
+        }, [] );
+    }
 
+    return (
+        <div>
+            <Paper className={ classes.root }>
+                {/* {newDate()} */ }
+                <Line
+                    data={ {
+                        labels: lastWeek,
+                        datasets: [
+                            {
+                                label: 'your mood rating',
+                                data: ratingsForLastWeek(),
+                                lineTension: 0,
+                                borderColor: "#90caf9",
+                                borderWidth: "3",
+                                hoverBorderColor: "#000",
+                                backgroundColor: [
+                                    '#bbdefb'
+                                ]
+                            },
+                        ],
 
-  return(
+                    }
+                    }
 
-    <div>
-      <Paper className={classes.root}>
-        {/* {newDate()} */}
-        <Line 
-        data = {{
-          // labels: [
-          //   newDate(0),
-          //   newDate(1),
-          //   newDate(2),
-          //   newDate(3),
-          //   newDate(4),
-          //   newDate(5),
-          //   newDate(6)
-          // ],
-          labels: ['11/30', '11/31', '12/01', '12/02', '12/03', '12/05'], 
-          datasets: [
-            {
-              label: 'your mood rating', 
-              data: [3, 5, 4, 1, 2, 1, 5],
-              lineTension: 0,
-              borderColor : "#90caf9",
-              borderWidth : "3",
-              hoverBorderColor : "#000",
-              backgroundColor: [
-                '#bbdefb'
-              ]
-            },
-          ],
+                    style={ { overflow: 'hidden' } }
+                    maxheight={ 400 }
+                    maxwidth={ 600 }
+                    options={ {
+                        maintainAspectRatio: false,
+                        bezierCurve: false,
+                        layout: {
+                            padding: {
+                                bottom: 30,
+                                left: 60,
+                                right: 90,
+                                top: 10
+                            },
+                        },
+                        scales: {
+                            yAxes: [
+                                {
+                                    ticks: {
+                                        beginAtZero: true,
+                                        steps: 5,
+                                        stepSize: 1,
 
-        }
-      }
-
-        style={{overflow: 'hidden'}}
-        maxheight = {400}
-        maxwidth = {600}
-        options = {{
-          maintainAspectRatio: false,
-          bezierCurve: false,
-          layout: {
-            padding: {
-              bottom: 30,
-              left: 60,
-              right: 90,
-              top: 10
-            },
-          },
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                  steps: 5,
-                  stepSize: 1,
-                  
-                },
-              },
-            ],
-          },
-        }}
-        /> 
-      </Paper>
-    </div>
-  )
+                                    },
+                                },
+                            ],
+                        },
+                    } }
+                />
+            </Paper>
+        </div>
+    )
 }
 
 export default Stats

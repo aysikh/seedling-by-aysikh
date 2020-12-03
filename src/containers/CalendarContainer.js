@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import * as dateFns from "date-fns";
 import { useHistory } from 'react-router-dom'
 import Calendar from '../components/Calendar'
 import CalendarInfo from '../components/CalendarInfo'
@@ -70,30 +71,20 @@ const CalendarContainer = () => {
         let dates = []
         if ( dailyentries ) {
             dailyentries.map( dailyentry => {
-                console.log( dailyentry )
                 let info = {}
                 info.id = dailyentry.id
-                info.date = dailyentry.date
+                info.date = dateFns.parseISO( dailyentry.date )
                 info.rating = dailyentry.rating
                 info.prompt = dailyentry.prompt_id
                 info.content = dailyentry.content
                 dates.push( info )
             } )
         }
-        // console.log(dates)
-        dates.map( date => {
-            let x = date.date.split( "-" )
-            let y = x[ 2 ].split( "T" )
-            let z = y[ 0 ]
-            let parsed = [ x[ 1 ], z, x[ 0 ] ]
-            date.date = parsed.join( "-" )
-            // console.log(parsedDate)
-            return date
-        } )
+
         return dates
     }
 
-console.log(dailyentries)
+// console.log(dailyentries)
 // if there the dailyentry date matches with a day on the calendar,
 // it should return an image
 // I know dailyentry's date = 
