@@ -73,7 +73,7 @@ const Calendar = (props) => {
                     return x.getDate() == formattedDate && dateFns.isSameMonth(day, monthStart) && dateFns.isSameMonth(x, monthStart)
                 })
                 // console.log(hasEntry)
-                console.log(formattedDate)
+                // console.log(formattedDate)
                 const cloneDay = day;
                 days.push(
                     <div
