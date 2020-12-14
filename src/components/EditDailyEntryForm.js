@@ -212,7 +212,7 @@ export default function EditDailyEntryForm( props ) {
                             <br/>
                             <br/>
                             <center>
-                                <label>What are you thankful for today?  </label>
+                                {/* <label>What are you thankful for today?  </label> */}
                                 <br/>
                                 <br/>
                                 {/* <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => {handleSubmit(event)}}> */ }

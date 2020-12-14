@@ -17,6 +17,7 @@ import ToDoContainer from '../containers/TodoContainer'
 import Gif from '../assets/navbar.gif'
 import Egg from '../assets/egg.gif'
 import Cloudy from '../assets/cloudy.gif'
+import Moon from '../assets/moon1.gif'
 
 const DAILY_ENTRY_URL = "http://localhost:3001/daily_entries"
 
@@ -84,7 +85,7 @@ export default function HomepageContainer() {
             return "Good afternoon!"
         }
         else {
-            return "Good evening!"
+            return "Good evening, Amy!"
         }
     }
 
@@ -95,7 +96,7 @@ export default function HomepageContainer() {
                     <br/>
                     <Grid container justify="center" spacing={ spacing }>
                         <div>
-                           <h1>  { currentGreeting() }  <img src={Cloudy} style={{height: '3.5rem'}}/>  </h1>
+                           <h1>  { currentGreeting() }  <img src={Moon} style={{height: '3.5rem'}}/>  </h1>
                         </div>
                         <br/> <br/>
                     </Grid>

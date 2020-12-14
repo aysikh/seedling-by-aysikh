@@ -55,7 +55,7 @@ const Stats = props => {
                         labels: lastWeek,
                         datasets: [
                             {
-                                label: 'your mood rating',
+                                label: 'mood rating',
                                 data: ratingsForLastWeek(),
                                 lineTension: 0,
                                 borderColor: "#519657",
