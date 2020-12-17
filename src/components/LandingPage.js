@@ -72,15 +72,6 @@ import LogContainer from '../containers/LogContainer'
     return (
         <div className={classes.div}>
             <CssBaseline />
-            {/* <Switch>
-                <Route path="/logout" component={LogInContainer} />
-                <Route exact path="/user/newuser" component={NewUserForm} />
-                <Route exact path ="/user/home" component={HomepageContainer} />
-                <Route exact path="/user/calendar" component={CalendarContainer} />
-                <Route exact path="/user/journal" component={JournalForm} />
-                <Route exact path="/user/stats" component={Main} />
-                <Route exact path ="/user/dailyentry" component={DailyEntryForm} />
-            </Switch> */}
             <div className={classes.root} id="homepage">
             <AppBar className={classes.appbar}>
                 <Toolbar className={classes.appbarWrapper} >
