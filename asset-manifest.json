@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/seedling-by-aysikh/static/css/main.dc77f641.chunk.css",
+    "main.js": "/seedling-by-aysikh/static/js/main.de8071fd.chunk.js",
+    "main.js.map": "/seedling-by-aysikh/static/js/main.de8071fd.chunk.js.map",
+    "runtime-main.js": "/seedling-by-aysikh/static/js/runtime-main.02b586c3.js",
+    "runtime-main.js.map": "/seedling-by-aysikh/static/js/runtime-main.02b586c3.js.map",
+    "static/js/2.01b9c353.chunk.js": "/seedling-by-aysikh/static/js/2.01b9c353.chunk.js",
+    "static/js/2.01b9c353.chunk.js.map": "/seedling-by-aysikh/static/js/2.01b9c353.chunk.js.map",
+    "index.html": "/seedling-by-aysikh/index.html",
+    "static/css/main.dc77f641.chunk.css.map": "/seedling-by-aysikh/static/css/main.dc77f641.chunk.css.map",
+    "static/js/2.01b9c353.chunk.js.LICENSE.txt": "/seedling-by-aysikh/static/js/2.01b9c353.chunk.js.LICENSE.txt",
+    "static/media/bear1.86366f61.png": "/seedling-by-aysikh/static/media/bear1.86366f61.png",
+    "static/media/bear2.c5e064e1.png": "/seedling-by-aysikh/static/media/bear2.c5e064e1.png",
+    "static/media/bear3.6fa0ced7.png": "/seedling-by-aysikh/static/media/bear3.6fa0ced7.png",
+    "static/media/bear4.26780ef3.png": "/seedling-by-aysikh/static/media/bear4.26780ef3.png",
+    "static/media/bear5.1cc73910.png": "/seedling-by-aysikh/static/media/bear5.1cc73910.png",
+    "static/media/bg.26737cf5.jpg": "/seedling-by-aysikh/static/media/bg.26737cf5.jpg",
+    "static/media/cloudy.d9bf502e.gif": "/seedling-by-aysikh/static/media/cloudy.d9bf502e.gif",
+    "static/media/egg.3ebb42db.gif": "/seedling-by-aysikh/static/media/egg.3ebb42db.gif",
+    "static/media/heart.0ff42cd0.png": "/seedling-by-aysikh/static/media/heart.0ff42cd0.png",
+    "static/media/logo6.326067ed.png": "/seedling-by-aysikh/static/media/logo6.326067ed.png",
+    "static/media/logo8.033dd8c6.png": "/seedling-by-aysikh/static/media/logo8.033dd8c6.png",
+    "static/media/michelle1.19687ae5.png": "/seedling-by-aysikh/static/media/michelle1.19687ae5.png",
+    "static/media/moon1.63fb3474.gif": "/seedling-by-aysikh/static/media/moon1.63fb3474.gif",
+    "static/media/navbar.25247ec7.gif": "/seedling-by-aysikh/static/media/navbar.25247ec7.gif",
+    "static/media/navbar2.46519a79.gif": "/seedling-by-aysikh/static/media/navbar2.46519a79.gif",
+    "static/media/quote1.f34bd15c.gif": "/seedling-by-aysikh/static/media/quote1.f34bd15c.gif",
+    "static/media/signinlogo.ebf5330c.png": "/seedling-by-aysikh/static/media/signinlogo.ebf5330c.png",
+    "static/media/webinfogreen1.0083091e.png": "/seedling-by-aysikh/static/media/webinfogreen1.0083091e.png",
+    "static/media/welcome.7ab39d4a.png": "/seedling-by-aysikh/static/media/welcome.7ab39d4a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.02b586c3.js",
+    "static/js/2.01b9c353.chunk.js",
+    "static/css/main.dc77f641.chunk.css",
+    "static/js/main.de8071fd.chunk.js"
+  ]
+}
