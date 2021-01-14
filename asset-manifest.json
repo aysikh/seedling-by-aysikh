@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/seedling-by-aysikh/static/css/main.dc77f641.chunk.css",
-    "main.js": "/seedling-by-aysikh/static/js/main.de8071fd.chunk.js",
-    "main.js.map": "/seedling-by-aysikh/static/js/main.de8071fd.chunk.js.map",
+    "main.js": "/seedling-by-aysikh/static/js/main.afbfc001.chunk.js",
+    "main.js.map": "/seedling-by-aysikh/static/js/main.afbfc001.chunk.js.map",
     "runtime-main.js": "/seedling-by-aysikh/static/js/runtime-main.02b586c3.js",
     "runtime-main.js.map": "/seedling-by-aysikh/static/js/runtime-main.02b586c3.js.map",
     "static/js/2.01b9c353.chunk.js": "/seedling-by-aysikh/static/js/2.01b9c353.chunk.js",
@@ -34,6 +34,6 @@
     "static/js/runtime-main.02b586c3.js",
     "static/js/2.01b9c353.chunk.js",
     "static/css/main.dc77f641.chunk.css",
-    "static/js/main.de8071fd.chunk.js"
+    "static/js/main.afbfc001.chunk.js"
   ]
 }
