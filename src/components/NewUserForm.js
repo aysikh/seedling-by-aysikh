@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -10,8 +12,6 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Logo from '../assets/signinlogo.png'
@@ -169,7 +169,7 @@ export default function NewUserForm( props ) {
 
         <Container component="main" maxWidth="xs">
             <Grid container component="main">
-                <CssBaseline/>
+                <CssBaseline />
                 <Paper>
                     <div className={ classes.paper }>
                         <img src={ Logo } style={ { height: "20vh" } }/>
